@@ -29,4 +29,6 @@ public interface GameController {
   void handleConfirmKey();
   void handlePassKey();
 
+  void handleAIMove();
+
 }

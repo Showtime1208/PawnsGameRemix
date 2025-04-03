@@ -1,7 +1,7 @@
 import cs3500.queensblood.model.Deck;
 import cs3500.queensblood.model.PawnsGameStructure;
 import cs3500.queensblood.view.PawnsBoardFrame;
-import cs3500.queensblood.controller.PawnsGameController;
+import cs3500.queensblood.controller.PawnsGameControllerStub;
 import cs3500.queensblood.controller.GameController;
 import cs3500.queensblood.view.BoardPanel;
 import cs3500.queensblood.view.HandPanel;
@@ -38,7 +38,7 @@ public class PawnsBoardMain {
       SwingUtilities.invokeLater(() -> {
         HandPanel handPanel = new HandPanel(model);
         BoardPanel boardPanel = new BoardPanel(model);
-        GameController controller = new PawnsGameController(model, boardPanel, handPanel);
+        GameController controller = new PawnsGameControllerStub(model, boardPanel, handPanel);
         PawnsBoardFrame frame = new PawnsBoardFrame(model, boardPanel, handPanel, controller);
 
         controller.startGame();  // Begin game loop and initialize view
