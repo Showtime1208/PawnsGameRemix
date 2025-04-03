@@ -1,8 +1,0 @@
-getHand(...) called
-getNumRows()
-getNumCols()
-getCell(0, 0)
-hasCard() called on cell (0, 0)
-isValidPlacement(Card0, 0, 0, RED)
-
-
