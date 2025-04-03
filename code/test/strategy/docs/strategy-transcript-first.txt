@@ -1,0 +1,182 @@
+Cell(0,0).addPawn called with owner=strategy.MockPlayer@10d59286
+Cell(0,4).addPawn called with owner=strategy.MockPlayer@fe18270
+Cell(1,0).addPawn called with owner=strategy.MockPlayer@10d59286
+Cell(1,4).addPawn called with owner=strategy.MockPlayer@fe18270
+Cell(2,0).addPawn called with owner=strategy.MockPlayer@10d59286
+Cell(2,4).addPawn called with owner=strategy.MockPlayer@fe18270
+placeCard called with (player=strategy.MockPlayer@fe18270,handIdx=0,row=0,col=4)
+getCardAt called with index=0
+Cell(0,4).setCard called with card=model.card.GameCard@6fb0d3ed
+placeCard called with (player=strategy.MockPlayer@fe18270,handIdx=0,row=0,col=3)
+getCardAt called with index=0
+Cell(0,3).setCard called with card=model.card.GameCard@6fb0d3ed
+getHandSize called
+getHand called
+getHeight called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=0,col=0)
+Cell(0,0).getCard called
+getCell called with (row=0,col=0)
+Cell(0,0).getPawns called
+getCell called with (row=0,col=0)
+Cell(0,0).getPawns called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=0,col=1)
+Cell(0,1).getCard called
+getCell called with (row=0,col=1)
+Cell(0,1).getPawns called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=0,col=2)
+Cell(0,2).getCard called
+getCell called with (row=0,col=2)
+Cell(0,2).getPawns called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=0,col=3)
+Cell(0,3).getCard called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=0,col=4)
+Cell(0,4).getCard called
+getWidth called
+getHeight called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=1,col=0)
+Cell(1,0).getCard called
+getCell called with (row=1,col=0)
+Cell(1,0).getPawns called
+getCell called with (row=1,col=0)
+Cell(1,0).getPawns called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=1,col=1)
+Cell(1,1).getCard called
+getCell called with (row=1,col=1)
+Cell(1,1).getPawns called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=1,col=2)
+Cell(1,2).getCard called
+getCell called with (row=1,col=2)
+Cell(1,2).getPawns called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=1,col=3)
+Cell(1,3).getCard called
+getCell called with (row=1,col=3)
+Cell(1,3).getPawns called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=1,col=4)
+Cell(1,4).getCard called
+getCell called with (row=1,col=4)
+Cell(1,4).getPawns called
+getCell called with (row=1,col=4)
+Cell(1,4).getPawns called
+getCell called with (row=1,col=4)
+Cell(1,4).getPawns called
+Cell(0,0).addPawn called with owner=strategy.MockPlayer@77a57272
+Cell(0,4).addPawn called with owner=strategy.MockPlayer@7181ae3f
+Cell(1,0).addPawn called with owner=strategy.MockPlayer@77a57272
+Cell(1,4).addPawn called with owner=strategy.MockPlayer@7181ae3f
+Cell(2,0).addPawn called with owner=strategy.MockPlayer@77a57272
+Cell(2,4).addPawn called with owner=strategy.MockPlayer@7181ae3f
+placeCard called with (player=strategy.MockPlayer@7181ae3f,handIdx=0,row=0,col=4)
+getCardAt called with index=0
+Cell(0,4).setCard called with card=model.card.GameCard@46238e3f
+placeCard called with (player=strategy.MockPlayer@7181ae3f,handIdx=0,row=0,col=3)
+getCardAt called with index=0
+Cell(0,3).setCard called with card=model.card.GameCard@46238e3f
+getHandSize called
+getHand called
+getHeight called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=0,col=0)
+Cell(0,0).getCard called
+getCell called with (row=0,col=0)
+Cell(0,0).getPawns called
+getCell called with (row=0,col=0)
+Cell(0,0).getPawns called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=0,col=1)
+Cell(0,1).getCard called
+getCell called with (row=0,col=1)
+Cell(0,1).getPawns called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=0,col=2)
+Cell(0,2).getCard called
+getCell called with (row=0,col=2)
+Cell(0,2).getPawns called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=0,col=3)
+Cell(0,3).getCard called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=0,col=4)
+Cell(0,4).getCard called
+getWidth called
+getHeight called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=1,col=0)
+Cell(1,0).getCard called
+getCell called with (row=1,col=0)
+Cell(1,0).getPawns called
+getCell called with (row=1,col=0)
+Cell(1,0).getPawns called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=1,col=1)
+Cell(1,1).getCard called
+getCell called with (row=1,col=1)
+Cell(1,1).getPawns called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=1,col=2)
+Cell(1,2).getCard called
+getCell called with (row=1,col=2)
+Cell(1,2).getPawns called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=1,col=3)
+Cell(1,3).getCard called
+getCell called with (row=1,col=3)
+Cell(1,3).getPawns called
+getWidth called
+getHeight called
+getWidth called
+getCell called with (row=1,col=4)
+Cell(1,4).getCard called
+getCell called with (row=1,col=4)
+Cell(1,4).getPawns called
+getCell called with (row=1,col=4)
+Cell(1,4).getPawns called
+getCell called with (row=1,col=4)
+Cell(1,4).getPawns called
