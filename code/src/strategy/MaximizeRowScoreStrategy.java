@@ -57,9 +57,6 @@ public class MaximizeRowScoreStrategy implements Strategy {
     if (!board.getCell(row, col).getPawns().get(0).getOwner().equals(player)) {
       return false;
     }
-    if (board.getCell(row, col).getPawns().size() < card.getCost()) {
-      return false;
-    }
-    return true;
+    return board.getCell(row, col).getPawns().size() >= card.getCost();
   }
 }

@@ -26,6 +26,11 @@ public class HandDisplayPanel extends JPanel {
   private final PlayerHandView parent;
   private final Player player;
 
+  /**
+   * Constructor for the hand display panel. Is unique based on each player.
+   * @param parent the parent view.
+   * @param player the player's hand.
+   */
   public HandDisplayPanel(PlayerHandView parent, Player player) {
     this.parent = parent;
     this.player = player;

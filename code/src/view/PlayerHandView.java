@@ -19,7 +19,8 @@ import model.card.Card;
  *   <li>"c" - confirm the move</li>
  *   <li>"p" - pass the turn</li>
  * </ul>
- * When the command is executed, a message is printed to the console (via the attached CommandListener).
+ * When the command is executed, a message is printed to the console
+ * (via the attached CommandListener).
  * </p>
  */
 public class PlayerHandView extends JPanel {
@@ -32,12 +33,10 @@ public class PlayerHandView extends JPanel {
   public static final int CARD_SPACING = 15;
   public static final int MAX_HAND_SIZE = 5;
   public static final int INFLUENCE_CELL_SIZE = 12;
-  private final Player player;
   private final HandDisplayPanel handDisplay;
   private final CommandPanel commandPanel;
   private List<Card> playerHand;
   private int selectedCardIndx = -1;
-  private double scaleFactor = 1.0;
   private HandActionListener listener;
 
   /**
@@ -47,7 +46,6 @@ public class PlayerHandView extends JPanel {
    */
   public PlayerHandView(Player player) {
     super(new BorderLayout());
-    this.player = player;
     this.playerHand = player.getHand();
     setPreferredSize(new Dimension(BASE_WIDTH, BASE_HEIGHT));
     setBackground(Color.WHITE);

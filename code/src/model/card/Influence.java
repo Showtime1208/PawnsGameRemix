@@ -1,5 +1,8 @@
 package model.card;
 
+/**
+ * The influence interface that implements the relevant methods.
+ */
 public interface Influence {
 
   /**
@@ -9,6 +12,5 @@ public interface Influence {
    */
   public boolean getInfluence();
 
-  public SimpleInfluence[][] getInfluenceArray(char[][] grid);
 
 }

@@ -1,7 +1,5 @@
 package model;
 
-import view.TurnListener;
-
 /**
  * Model interface. Handles all game-related logic, and delegates to component classes.
  */
@@ -40,10 +38,4 @@ public interface Board extends ReadOnlyBoard {
    */
   public void passTurn(Player player);
 
-  /**
-   * Adds listeners
-   */
-  void addTurnListener(TurnListener listener);
-
-  void removeTurnListener(TurnListener listener);
 }

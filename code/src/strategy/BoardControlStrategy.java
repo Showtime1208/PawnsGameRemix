@@ -65,10 +65,7 @@ public class BoardControlStrategy implements Strategy {
     if (!board[row][col].getPawns().get(0).getOwner().equals(player)) {
       return false;
     }
-    if (board[row][col].getPawns().size() < card.getCost()) {
-      return false;
-    }
-    return true;
+    return board[row][col].getPawns().size() >= card.getCost();
   }
 
   protected Cell[][] testPlacement(Board board, Player player, Card card, int handIdx, int row,
@@ -168,10 +165,7 @@ public class BoardControlStrategy implements Strategy {
     if (col < 0 || col >= board[0].length) {
       return false;
     }
-    if (board[row][col].getCard() != null) {
-      return false;
-    }
-    return true;
+    return board[row][col].getCard() == null;
   }
 
 }

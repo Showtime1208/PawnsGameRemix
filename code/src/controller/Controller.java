@@ -3,12 +3,12 @@ package controller;
 
 import view.CommandListener;
 import view.PawnsBoardViewListener;
-import view.TurnListener;
 
 /**
- * Controller Interface for the game. Not necessary yet.
+ * Controller Interface for the game. Delegates between the view and model when the player is a
+ * human, and delegates between the strategy and the model if the player is AI.
  */
-public interface Controller extends PawnsBoardViewListener, CommandListener, TurnListener {
+public interface Controller extends PawnsBoardViewListener, CommandListener {
 
   /**
    * Called clearly when a cell on the board is clicked.
@@ -41,6 +41,11 @@ public interface Controller extends PawnsBoardViewListener, CommandListener, Tur
    * Processes the AI command based on the current board state.
    */
   void processAICommand();
+
+  /**
+   * Plays the game for the AI.
+   */
+  void playGame();
 
 
 }

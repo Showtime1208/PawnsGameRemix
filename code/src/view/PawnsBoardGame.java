@@ -17,7 +17,6 @@ public class PawnsBoardGame extends JFrame implements PawnsBoardViewInterface {
   private final PlayerHandView handView;
   private final ScorePanel redScorePanel;
   private final ScorePanel blueScorePanel;
-  private PawnsBoardViewListener listener;
 
   /**
    * Constructor for the game view. Takes in the model and prints out the view representation of the
@@ -52,7 +51,6 @@ public class PawnsBoardGame extends JFrame implements PawnsBoardViewInterface {
 
   @Override
   public void setViewListener(PawnsBoardViewListener listener) {
-    this.listener = listener;
     boardView.addClickListener(listener::handleCellClick);
     handView.addClickListener(new HandActionListener() {
       @Override

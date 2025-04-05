@@ -7,7 +7,6 @@ import model.Player;
 import model.card.Card;
 import model.card.Influence;
 import model.card.Pawn;
-import view.TurnListener;
 
 /**
  * Testable Mock class for strategy tests. Fully functional board, without any rules.
@@ -137,15 +136,6 @@ public class MockBoard implements Board {
         .append("\n");
   }
 
-  @Override
-  public void addTurnListener(TurnListener listener) {
-
-  }
-
-  @Override
-  public void removeTurnListener(TurnListener listener) {
-
-  }
 
   @Override
   public int getWidth() {

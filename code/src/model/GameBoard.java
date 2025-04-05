@@ -5,10 +5,11 @@ import java.util.List;
 import model.card.Card;
 import model.card.Influence;
 import model.card.Pawn;
-import view.TurnListener;
 
 /**
- * Implementation of the Board interface. Implements all game logic.
+ * Implementation of the Board interface. Implements all game logic. Looks at the validity of
+ * playing the card, and looks at the card itself and places the card's influence array onto the
+ * board.
  */
 public class GameBoard implements Board {
 
@@ -27,7 +28,6 @@ public class GameBoard implements Board {
   private boolean turn;
   private boolean passTurn;
   private boolean gameOver;
-  private List<TurnListener> listeners;
 
   private Cell[][] board;
 
@@ -53,7 +53,6 @@ public class GameBoard implements Board {
     this.gameStart = false;
     this.passTurn = false;
     this.turn = true;
-    this.listeners = new ArrayList<>();
 
   }
 
@@ -68,8 +67,8 @@ public class GameBoard implements Board {
 
   @Override
   public void startGame(Player player1, Player player2) {
-    if (player1.getDeck().size() < rowSize * colSize ||
-        player2.getDeck().size() < rowSize * colSize) {
+    if (player1.getDeck().size() < rowSize * colSize
+        || player2.getDeck().size() < rowSize * colSize) {
       throw new IllegalArgumentException("Decks are too small for specified dimensions.");
     }
     if (player1.getHandSize() != player2.getHandSize()) {
@@ -138,7 +137,7 @@ public class GameBoard implements Board {
       passTurn = false;
     }
     this.turn = !this.turn;
-    notifyTurnListeners();
+
   }
 
   private void applyInfluence(Player player, Card card, int placedRow, int placedCol) {
@@ -258,7 +257,6 @@ public class GameBoard implements Board {
       throw new IllegalStateException("Not your  turn.");
     }
     this.turn = !this.turn;
-    notifyTurnListeners();
     if (this.passTurn) {
       this.gameOver = true;
     } else {
@@ -266,21 +264,6 @@ public class GameBoard implements Board {
     }
   }
 
-  @Override
-  public void addTurnListener(TurnListener listener) {
-    this.listeners.add(listener);
-  }
-
-  @Override
-  public void removeTurnListener(TurnListener listener) {
-    this.listeners.remove(listener);
-  }
-
-  private void notifyTurnListeners() {
-    for (TurnListener listener : this.listeners) {
-      listener.onTurnChange(turn);
-    }
-  }
 
   // returns number of rows
   @Override

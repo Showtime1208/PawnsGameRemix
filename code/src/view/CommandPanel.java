@@ -24,6 +24,9 @@ public class CommandPanel extends JPanel {
   private final JTextField field;
   private final JButton button;
 
+  /**
+   * Constructor for command panel. Generates the initial panel.
+   */
   public CommandPanel() {
     setLayout(new FlowLayout());
     add(new JLabel("Enter command (c=confirm, p=pass): "));

@@ -16,6 +16,9 @@ import strategy.Strategy;
 import view.SimpleTextualView;
 import view.TextualView;
 
+/**
+ * Test class for the public strategy fields.
+ */
 public class TestStrategyPublic {
 
   public MockBoard board;

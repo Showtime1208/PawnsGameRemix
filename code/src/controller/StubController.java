@@ -42,12 +42,14 @@ public class StubController implements Controller {
 
   @Override
   public void processAICommand() {
-
+    //needed cuz stub.
   }
 
   @Override
-  public void onTurnChange(boolean isRed) {
-
+  public void playGame() {
+    //needed cuz stub.
   }
+
+
 }
 

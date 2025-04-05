@@ -5,7 +5,8 @@ import java.util.List;
 import model.card.Card;
 
 /**
- * Implementation of the Player Interface. Holds all logic for manipulating the deck and hand.
+ * Implementation of the Player Interface. Holds all logic for manipulating the deck and hand. Holds
+ * what player it is, its hand size, and its deck/hand.
  */
 public class SimplePlayer implements Player {
 
@@ -56,8 +57,8 @@ public class SimplePlayer implements Player {
   @Override
   public Card getCardAt(int index) {
     if (index < 0 || index >= hand.size()) {
-      throw new IllegalArgumentException("The index cannot be less than 0 or more " +
-          "than the size of the hand");
+      throw new IllegalArgumentException("The index cannot be less than 0 or more "
+          + "than the size of the hand");
     }
     return hand.get(index);
   }

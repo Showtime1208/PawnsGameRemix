@@ -17,7 +17,7 @@ public class FillFirstStrategy implements Strategy {
     if (board == null || player == null) {
       throw new IllegalArgumentException("Board or player is null");
     }
-    for (int cardIdx = 0; cardIdx < player.getHandSize(); cardIdx++) {
+    for (int cardIdx = 0; cardIdx < player.getHandSize() - 1; cardIdx++) {
       Card card = player.getHand().get(cardIdx);
       for (int row = 0; row < board.getHeight(); row++) {
         for (int col = 0; col < board.getWidth(); col++) {
@@ -44,10 +44,7 @@ public class FillFirstStrategy implements Strategy {
     if (!board.getCell(row, col).getPawns().get(0).getOwner().equals(player)) {
       return false;
     }
-    if (board.getCell(row, col).getPawns().size() < card.getCost()) {
-      return false;
-    }
-    return true;
+    return board.getCell(row, col).getPawns().size() >= card.getCost();
   }
 
 }

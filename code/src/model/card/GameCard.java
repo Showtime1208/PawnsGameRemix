@@ -3,7 +3,7 @@ package model.card;
 import model.Player;
 
 /**
- * Represents the game card class.
+ * Represents the game card class. Holds all Influence, naming, scoring, and values for the cards.
  */
 public class GameCard implements Card {
 
@@ -17,6 +17,14 @@ public class GameCard implements Card {
 
   private Player owner;
 
+  /**
+   * Represents the constructor of the GameCard class to initalize a card.
+   *
+   * @param name           the name of the card.
+   * @param influenceArray infleuence grid of card.
+   * @param cost           cost of card.
+   * @param value          value of card.
+   */
   public GameCard(String name, Influence[][] influenceArray, int cost, int value) {
     if (name == null || influenceArray == null || cost <= 0 || cost > 3 || value <= 0) {
       throw new IllegalArgumentException("Illegal arguments for GameCard");

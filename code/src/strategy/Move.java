@@ -1,5 +1,9 @@
 package strategy;
 
+/**
+ * Records class representing a move. Holds the boolean value of whether or not it is a pass, and
+ * the row, col, and card index if not.
+ */
 public class Move {
 
   private final int row;
@@ -7,6 +11,14 @@ public class Move {
   private final boolean pass;
   private final int cardIdx;
 
+  /**
+   * The move constructor.
+   *
+   * @param row     the row.
+   * @param col     the col.
+   * @param pass    the pass.
+   * @param cardIdx the card index.
+   */
   public Move(int row, int col, boolean pass, int cardIdx) {
     this.row = row;
     this.col = col;
@@ -43,6 +55,13 @@ public class Move {
     Move move = (Move) o;
     return move.getRow() == row && move.getCol() == col && move.isPass() == pass
         && move.getCardIdx() == cardIdx;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = row;
+    result = 31 * result + cardIdx + col;
+    return result;
   }
 
 }

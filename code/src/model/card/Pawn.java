@@ -2,6 +2,9 @@ package model.card;
 
 import model.Player;
 
+/**
+ * The pawn interface for methods relevant to the pawn.
+ */
 public interface Pawn {
 
   /**

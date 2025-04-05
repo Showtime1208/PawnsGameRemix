@@ -22,6 +22,9 @@ import org.junit.Test;
 import view.SimpleTextualView;
 import view.TextualView;
 
+/**
+ * Test Class for the public model fields.
+ */
 public class TestModelPublic {
 
 

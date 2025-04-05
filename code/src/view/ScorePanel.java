@@ -18,7 +18,6 @@ public class ScorePanel extends JPanel {
   private static final Font SCORE_FONT = new Font("arial", Font.BOLD, 14);
   private final ReadOnlyBoard model;
   private final Player player;
-  private final int rowHeight;
 
   /**
    * Constrcts a score panel.
@@ -30,7 +29,6 @@ public class ScorePanel extends JPanel {
   public ScorePanel(ReadOnlyBoard model, Player player, int rowHeight) {
     this.model = model;
     this.player = player;
-    this.rowHeight = rowHeight;
 
     int panelHeight =
         (model.getHeight()) * rowHeight + rowHeight;  // Include extra row for Total Score clearly
