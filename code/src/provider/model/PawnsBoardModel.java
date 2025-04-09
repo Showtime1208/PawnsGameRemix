@@ -2,8 +2,8 @@ package provider.model;
 
 import java.util.List;
 
-import cs3500.pawnsboard.model.hw06.ReadonlyPawnsBoardModel;
-import cs3500.pawnsboard.model.hw07.ModelStatus;
+import provider.model.ReadonlyPawnsBoardModel;
+import provider.model.ModelStatus;
 
 /**
  * Represents a board to play a game of PawnsBoardModel.

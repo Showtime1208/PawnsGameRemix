@@ -3,8 +3,8 @@ package provider.view;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 
-import cs3500.pawnsboard.model.hw05.Player;
-import cs3500.pawnsboard.view.hw07.PlayerAction;
+import provider.model.Player;
+import provider.view.PlayerAction;
 
 
 /**

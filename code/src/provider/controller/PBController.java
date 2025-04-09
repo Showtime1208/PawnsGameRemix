@@ -1,7 +1,7 @@
 package provider.controller;
 
-import cs3500.pawnsboard.model.hw07.ModelStatus;
-import cs3500.pawnsboard.view.hw07.PlayerAction;
+import provider.model.ModelStatus;
+import provider.view.PlayerAction;
 
 public interface PBController extends ModelStatus, PlayerAction {
 

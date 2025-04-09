@@ -15,10 +15,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputAdapter;
 
-import cs3500.pawnsboard.model.hw05.Card;
-import cs3500.pawnsboard.model.hw05.Player;
-import cs3500.pawnsboard.model.hw06.ReadonlyPawnsBoardModel;
-import cs3500.pawnsboard.view.hw07.PlayerAction;
+import provider.model.Card;
+import provider.model.Player;
+import provider.model.ReadonlyPawnsBoardModel;
+import provider.view.PlayerAction;
 
 /**
  * Represents a panel for Pawns Board.

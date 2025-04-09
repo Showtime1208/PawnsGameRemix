@@ -5,9 +5,9 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
-import cs3500.pawnsboard.model.hw05.Player;
-import cs3500.pawnsboard.model.hw06.ReadonlyPawnsBoardModel;
-import cs3500.pawnsboard.view.hw07.PlayerAction;
+import provider.model.Player;
+import provider.model.ReadonlyPawnsBoardModel;
+import provider.view.PlayerAction;
 
 /**
  * GUI view for Pawns Board.

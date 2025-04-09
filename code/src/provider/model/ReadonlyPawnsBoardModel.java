@@ -2,9 +2,9 @@ package provider.model;
 
 import java.util.List;
 
-import cs3500.pawnsboard.model.hw05.Card;
-import cs3500.pawnsboard.model.hw05.Cell;
-import cs3500.pawnsboard.model.hw05.Player;
+import provider.model.Card;
+import provider.model.Cell;
+import provider.model.Player;
 
 /**
  * A version of the PawnsBoard game that cannot be modified. This version is read only, and
