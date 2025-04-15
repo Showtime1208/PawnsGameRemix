@@ -1,11 +1,5 @@
 package provider.view;
 
-import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
-
-import provider.model.Player;
-import provider.view.PlayerAction;
-
 
 /**
  * A view for PawnsBoard, displays the game board and provides visual interface for users.

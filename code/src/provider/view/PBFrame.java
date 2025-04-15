@@ -1,13 +1,9 @@
 package provider.view;
 
-import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
-
 import javax.swing.JFrame;
 
-import provider.model.Player;
+import provider.model.PlayerEnum;
 import provider.model.ReadonlyPawnsBoardModel;
-import provider.view.PlayerAction;
 
 /**
  * GUI view for Pawns Board.
@@ -19,10 +15,10 @@ public class PBFrame extends JFrame implements PBGUIView {
   /**
    * Creates a GUI for PawnsBoard.
    */
-  public PBFrame(ReadonlyPawnsBoardModel model, Player player) {
+  public PBFrame(ReadonlyPawnsBoardModel model, PlayerEnum playerEnum) {
     super();
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    panel = new PBPanel(model, player);
+    panel = new PBPanel(model, playerEnum);
     this.setSize(model.getWidth() * 100 + 210, model.getHeight() * 100 + 140);
     this.add(panel);
     panel.requestFocusInWindow();

@@ -2,13 +2,10 @@ package provider.model;
 
 import java.util.List;
 
-import provider.model.ReadonlyPawnsBoardModel;
-import provider.model.ModelStatus;
-
 /**
  * Represents a board to play a game of PawnsBoardModel.
  */
-public interface PawnsBoardModel<C extends Card> extends ReadonlyPawnsBoardModel {
+public interface PawnsBoardModel<C extends ProviderCard> extends ReadonlyPawnsBoardModel {
 
   /**
    * Places a card on the board.
@@ -39,5 +36,5 @@ public interface PawnsBoardModel<C extends Card> extends ReadonlyPawnsBoardModel
    */
   void startGame(List<C> deckRed, List<C> deckBlue, int handSize);
 
-  void addModelStatusListener(ModelStatus observer, Player player);
+  void addModelStatusListener(ModelStatus observer, PlayerEnum playerEnum);
 }

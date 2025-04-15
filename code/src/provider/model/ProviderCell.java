@@ -3,13 +3,13 @@ package provider.model;
 /**
  * Represents a Cell for a game of PawnsBoardModel.
  */
-public interface Cell {
+public interface ProviderCell {
 
   /**
    * Returns the player that owns the cell, or none if no player owns it.
    * @return the owner of the cell.
    */
-  Player getOwner();
+  PlayerEnum getOwner();
 
   /**
    * Returns the number of pawns in the cell.
@@ -21,7 +21,7 @@ public interface Cell {
    * Returns the card that is occupied in the cell.
    * @return the card contained by the cell, or null if the cell does not contain a card.
    */
-  Card getCard();
+  ProviderCard getCard();
 
   /**
    * Returns the value of the card in the cell.
@@ -40,15 +40,15 @@ public interface Cell {
    * Places the given card in the cell.
    * Will not place the card if the cost of the card is above the number of pawns on the board.
    * Sets the number of pawns in the cell to 0, as the cell is now filled by a card.
-   * @param card the card to be placed in the cell.
+   * @param providerCard the card to be placed in the cell.
    * @throws IllegalArgumentException if the given card is null.
    */
-  void placeCard(Card card);
+  void placeCard(ProviderCard providerCard);
 
   /**
    * Changes the owner of the cell to the given one.
    * @param newOwner the new owner of the cell.
    * @throws IllegalArgumentException if the new owner is null.
    */
-  void changeOwner(Player newOwner);
+  void changeOwner(PlayerEnum newOwner);
 }

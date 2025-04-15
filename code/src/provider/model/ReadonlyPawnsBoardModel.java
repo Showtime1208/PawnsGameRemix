@@ -2,10 +2,6 @@ package provider.model;
 
 import java.util.List;
 
-import provider.model.Card;
-import provider.model.Cell;
-import provider.model.Player;
-
 /**
  * A version of the PawnsBoard game that cannot be modified. This version is read only, and
  * properties of the game can only be viewed, never changed.
@@ -24,18 +20,18 @@ public interface ReadonlyPawnsBoardModel {
   /**
    * Returns the current score of the game.
    * @param row the row being scored.
-   * @param player the player whose score is calculated.
+   * @param playerEnum the player whose score is calculated.
    * @return the score of the game.
    * @throws IllegalStateException if the game is not over or has not started.
    */
-  int getRowScore(int row, Player player);
+  int getRowScore(int row, PlayerEnum playerEnum);
 
   /**
    * Gets winner of the game.
    * @return player with highest score.
    * @throws IllegalStateException if game is not over.
    */
-  Player getWinner();
+  PlayerEnum getWinner();
 
   /**
    * Determines the width in number of cells of this PawnsBoardModel's playing board.
@@ -57,26 +53,26 @@ public interface ReadonlyPawnsBoardModel {
    * @throws IllegalStateException if the game is not in progress
    * @throws IllegalArgumentException if the row or col are out of bounds.
    */
-  Cell getCellAt(int row, int col);
+  ProviderCell getCellAt(int row, int col);
 
   /**
    * Gets the current player whose turn it is.
    * @return the player whose turn it is.
    */
-  Player getTurn();
+  PlayerEnum getTurn();
 
   /**
    * Gets the current Cells which make up the Board of this game.
    * @return the game's board.
    */
-  Cell[][] getBoard();
+  ProviderCell[][] getBoard();
 
   /**
    * Retrieves the hand of the given player.
-   * @param player represents the player whose hand we wish to retrieve.
+   * @param playerEnum represents the player whose hand we wish to retrieve.
    * @return the hand of the given player.
    */
-  List<Card> getHand(Player player);
+  List<ProviderCard> getHand(PlayerEnum playerEnum);
 
   /**
    * Determines who owns a specified cell on the game board.
@@ -84,7 +80,7 @@ public interface ReadonlyPawnsBoardModel {
    * @param col represents the col coordinate of the cell.
    * @return the owner of the specified cell.
    */
-  Player getOwnerOf(int row, int col);
+  PlayerEnum getOwnerOf(int row, int col);
 
   /**
    * Determines if a given move is a playable move.
@@ -99,9 +95,9 @@ public interface ReadonlyPawnsBoardModel {
 
   /**
    * Retrieves the score of the given player.
-   * @param player represents the player we wish to retrieve the score for.
+   * @param playerEnum represents the player we wish to retrieve the score for.
    * @return the score of the given player.
    * @throws IllegalStateException if game has not started.
    */
-  int getPlayerScore(Player player);
+  int getPlayerScore(PlayerEnum playerEnum);
 }

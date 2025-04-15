@@ -4,7 +4,7 @@ package provider.model;
  * Represents a player ownership of a cell.
  * The cell can be owner by player Red, player Blue, or no player (None)
  */
-public enum Player {
+public enum PlayerEnum {
   Red("R"), Blue("B"), None("_");
 
   private final String owner;
@@ -14,7 +14,7 @@ public enum Player {
    * The cell can be owner by player Red, player Blue, or no player (None)
    * @param owner the owner of the cell.
    */
-  Player(final String owner) {
+  PlayerEnum(final String owner) {
     this.owner = owner;
   }
 

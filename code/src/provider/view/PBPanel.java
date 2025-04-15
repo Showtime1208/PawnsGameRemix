@@ -15,10 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputAdapter;
 
-import provider.model.Card;
-import provider.model.Player;
+import provider.model.ProviderCard;
+import provider.model.PlayerEnum;
 import provider.model.ReadonlyPawnsBoardModel;
-import provider.view.PlayerAction;
 
 /**
  * Represents a panel for Pawns Board.
@@ -36,8 +35,8 @@ public class PBPanel extends JPanel {
   private int cardHighlightX = -1;
   private int cellHighlightY = -1;
   private int cellHighlightX = -1;
-  private Card highlightedCard = null;
-  private Player player;
+  private ProviderCard highlightedProviderCard = null;
+  private PlayerEnum playerEnum;
   private int lastHighlightedCellX;
   private int lastHighlightedCellY;
   private final MouseEventsListener listener = new MouseEventsListener();
@@ -49,12 +48,12 @@ public class PBPanel extends JPanel {
    *
    * @param model represents the model passed in to the panel
    */
-  public PBPanel(ReadonlyPawnsBoardModel model, Player player) {
+  public PBPanel(ReadonlyPawnsBoardModel model, PlayerEnum playerEnum) {
     if (model == null) {
       throw new IllegalArgumentException("Model cannot be null");
     }
     this.model = model;
-    this.player = player;
+    this.playerEnum = playerEnum;
     this.boardWidth = model.getWidth() * 100 + 200;
     this.boardHeight = model.getHeight() * 100;
     this.addMouseListener(listener);
@@ -94,8 +93,8 @@ public class PBPanel extends JPanel {
   private void drawScore(Graphics2D g2d) {
     g2d.setColor(Color.BLACK);
     for (int i = 0; i < this.model.getHeight(); i++) {
-      g2d.drawString(this.model.getRowScore(i, Player.Red) + "", 50, 50 + i * 100);
-      g2d.drawString(this.model.getRowScore(i, Player.Blue) + "", this.boardWidth - 50,
+      g2d.drawString(this.model.getRowScore(i, PlayerEnum.Red) + "", 50, 50 + i * 100);
+      g2d.drawString(this.model.getRowScore(i, PlayerEnum.Blue) + "", this.boardWidth - 50,
               50 + i * 100);
     }
   }
@@ -105,10 +104,10 @@ public class PBPanel extends JPanel {
       g2d.setColor(Color.GRAY);
       g2d.fillRect(0, (100 * i), 100, 100);
       g2d.fillRect(boardWidth - 100, (100 * i), 100, 100);
-      if (this.model.getRowScore(i, Player.Red) > this.model.getRowScore(i, Player.Blue)) {
+      if (this.model.getRowScore(i, PlayerEnum.Red) > this.model.getRowScore(i, PlayerEnum.Blue)) {
         g2d.setColor(playerRedColor);
         g2d.fillOval(25, (100 * i) + 25, 50, 50);
-      } else if (this.model.getRowScore(i, Player.Red) < this.model.getRowScore(i, Player.Blue)) {
+      } else if (this.model.getRowScore(i, PlayerEnum.Red) < this.model.getRowScore(i, PlayerEnum.Blue)) {
         g2d.setColor(playerBlueColor);
         g2d.fillOval(boardWidth - 75, (100 * i) + 25, 50, 50);
       }
@@ -151,7 +150,7 @@ public class PBPanel extends JPanel {
                     150 + 100 * i, 50 + 100 * j);
           }
         } else if (this.model.getCellAt(j, i).getPawns() != 0) {
-          if (this.model.getCellAt(j, i).getOwner() == Player.Red) {
+          if (this.model.getCellAt(j, i).getOwner() == PlayerEnum.Red) {
             g2d.setColor(playerRedColor);
           } else {
             g2d.setColor(playerBlueColor);
@@ -177,7 +176,7 @@ public class PBPanel extends JPanel {
     for (int n = 0; n < split.length; n++) {
       g2d.drawString(split[n], 101 + 100 * j, 10 + (10 * n) + (100 * i));
     }
-    if (this.model.getCellAt(i, j).getOwner() == Player.Blue) {
+    if (this.model.getCellAt(i, j).getOwner() == PlayerEnum.Blue) {
       g2d.setColor(playerBlueColor);
     } else {
       g2d.setColor(playerRedColor);
@@ -187,14 +186,14 @@ public class PBPanel extends JPanel {
   }
 
   private void drawHand(Graphics2D g2d) {
-    if (this.highlightedCard != null) {
-      System.out.println(this.highlightedCard.getName());
+    if (this.highlightedProviderCard != null) {
+      System.out.println(this.highlightedProviderCard.getName());
     }
     else {
       System.out.println("null");
     }
-    for (int i = 0; i < this.model.getHand(this.player).size(); i++) {
-      if (this.model.getHand(this.player).get(i).equals(this.highlightedCard)) {
+    for (int i = 0; i < this.model.getHand(this.playerEnum).size(); i++) {
+      if (this.model.getHand(this.playerEnum).get(i).equals(this.highlightedProviderCard)) {
         g2d.setColor(this.itemSelectedColor);
       } else {
         this.setPlayerColor(g2d);
@@ -204,8 +203,8 @@ public class PBPanel extends JPanel {
       g2d.setColor(Color.BLACK);
       g2d.setFont(cardFont);
       String[] split;
-      for (int j = 0; j < this.model.getHand(this.player).size(); j++) {
-        split = this.model.getHand(this.player).get(j).toString().split("\\n");
+      for (int j = 0; j < this.model.getHand(this.playerEnum).size(); j++) {
+        split = this.model.getHand(this.playerEnum).get(j).toString().split("\\n");
         for (int n = 0; n < split.length; n++) {
           g2d.drawString(split[n], (this.boardWidth / 3) * j,
                   (this.model.getHeight() * 100) + 10 + (10 * n));
@@ -215,7 +214,7 @@ public class PBPanel extends JPanel {
   }
 
   private void setPlayerColor(Graphics2D g2d) {
-    if (this.player == Player.Blue) {
+    if (this.playerEnum == PlayerEnum.Blue) {
       g2d.setColor(playerBlueColor);
     } else {
       g2d.setColor(playerRedColor);
@@ -227,19 +226,19 @@ public class PBPanel extends JPanel {
       @Override
       public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-          if (!PBPanel.this.isHighlightedCell || PBPanel.this.highlightedCard == null) {
+          if (!PBPanel.this.isHighlightedCell || PBPanel.this.highlightedProviderCard == null) {
             return;
           } else {
             for (PlayerAction obs : PBPanel.this.observers) {
               obs.moveChosen(PBPanel.this.cardHighlightX,
                       PBPanel.this.cellHighlightY, PBPanel.this.cellHighlightX);
             }
-            PBPanel.this.highlightedCard = null;
+            PBPanel.this.highlightedProviderCard = null;
             PBPanel.this.isHighlightedCell = false;
           }
           PBPanel.this.repaint();
         } else if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-          PBPanel.this.highlightedCard = null;
+          PBPanel.this.highlightedProviderCard = null;
           PBPanel.this.isHighlightedCell = false;
           PBPanel.this.repaint();
           for (PlayerAction obs : PBPanel.this.observers) {
@@ -299,11 +298,11 @@ public class PBPanel extends JPanel {
     }
 
     private void highlightCard() {
-      if (PBPanel.this.highlightedCard == null) {
-        PBPanel.this.highlightedCard = PBPanel.this.model.getHand(PBPanel.this.model.getTurn()).get((PBPanel.this.cardHighlightX));
+      if (PBPanel.this.highlightedProviderCard == null) {
+        PBPanel.this.highlightedProviderCard = PBPanel.this.model.getHand(PBPanel.this.model.getTurn()).get((PBPanel.this.cardHighlightX));
       } else if (PBPanel.this.model.getHand(PBPanel.this.model.getTurn()).get((PBPanel.this.cardHighlightX)).equals(
-              PBPanel.this.highlightedCard)) {
-        PBPanel.this.highlightedCard = null;
+              PBPanel.this.highlightedProviderCard)) {
+        PBPanel.this.highlightedProviderCard = null;
       }
     }
 

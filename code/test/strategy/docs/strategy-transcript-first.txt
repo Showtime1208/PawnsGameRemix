@@ -4,12 +4,12 @@ Cell(1,0).addPawn called with owner=strategy.MockPlayer@10d59286
 Cell(1,4).addPawn called with owner=strategy.MockPlayer@fe18270
 Cell(2,0).addPawn called with owner=strategy.MockPlayer@10d59286
 Cell(2,4).addPawn called with owner=strategy.MockPlayer@fe18270
-placeCard called with (player=strategy.MockPlayer@fe18270,handIdx=0,row=0,col=4)
+placeCard called with (playerEnum=strategy.MockPlayer@fe18270,handIdx=0,row=0,col=4)
 getCardAt called with index=0
-Cell(0,4).setCard called with card=model.card.GameCard@6fb0d3ed
-placeCard called with (player=strategy.MockPlayer@fe18270,handIdx=0,row=0,col=3)
+Cell(0,4).setCard called with providerCard=model.providerCard.GameCard@6fb0d3ed
+placeCard called with (playerEnum=strategy.MockPlayer@fe18270,handIdx=0,row=0,col=3)
 getCardAt called with index=0
-Cell(0,3).setCard called with card=model.card.GameCard@6fb0d3ed
+Cell(0,3).setCard called with providerCard=model.providerCard.GameCard@6fb0d3ed
 getHandSize called
 getHand called
 getHeight called
@@ -95,12 +95,12 @@ Cell(1,0).addPawn called with owner=strategy.MockPlayer@77a57272
 Cell(1,4).addPawn called with owner=strategy.MockPlayer@7181ae3f
 Cell(2,0).addPawn called with owner=strategy.MockPlayer@77a57272
 Cell(2,4).addPawn called with owner=strategy.MockPlayer@7181ae3f
-placeCard called with (player=strategy.MockPlayer@7181ae3f,handIdx=0,row=0,col=4)
+placeCard called with (playerEnum=strategy.MockPlayer@7181ae3f,handIdx=0,row=0,col=4)
 getCardAt called with index=0
-Cell(0,4).setCard called with card=model.card.GameCard@46238e3f
-placeCard called with (player=strategy.MockPlayer@7181ae3f,handIdx=0,row=0,col=3)
+Cell(0,4).setCard called with providerCard=model.providerCard.GameCard@46238e3f
+placeCard called with (playerEnum=strategy.MockPlayer@7181ae3f,handIdx=0,row=0,col=3)
 getCardAt called with index=0
-Cell(0,3).setCard called with card=model.card.GameCard@46238e3f
+Cell(0,3).setCard called with providerCard=model.providerCard.GameCard@46238e3f
 getHandSize called
 getHand called
 getHeight called

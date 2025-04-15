@@ -3,7 +3,7 @@ package provider.model;
 /**
  * Represents a card for the game PawnsBoardModel.
  */
-public interface Card {
+public interface ProviderCard {
 
   /**
    * gets the name of this Card.
