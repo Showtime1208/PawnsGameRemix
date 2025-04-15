@@ -49,6 +49,7 @@ public class PBControllerAdapter implements PBController {
 
   @Override
   public void refreshView() {
+
   }
 
   @Override

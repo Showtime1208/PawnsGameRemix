@@ -7,21 +7,31 @@ import model.Player;
 import model.SimplePlayer;
 import model.card.Card;
 import model.card.DeckReader;
+import provider.controller.PBControllerAdapter;
+import provider.model.ModelAdapter;
+import provider.model.PlayerEnum;
+import provider.model.ReadonlyPawnsBoardModel;
+import provider.view.PBFrame;
+import provider.view.PBViewAdapter;
 import strategy.BoardControlStrategy;
 import strategy.FillFirstStrategy;
 import strategy.MaximizeRowScoreStrategy;
 import strategy.Strategy;
 import view.PawnsBoardGame;
+import view.PawnsBoardViewInterface;
 
 /**
- * Placeholder main class clearly instantiating and running PawnsBoardGame GUI.
+ * Main class showing how to run PawnsBoardGame (Red) and PBFrame (Blue).
  */
 public final class PawnsGame {
 
   /**
-   * Main method for the program.
+   * Main entry point.
    *
-   * @param args the command line args.
+   * args[0] = red deck path
+   * args[1] = blue deck path
+   * args[2] = red player type (human or strategy1/2/3)
+   * args[3] = blue player type (human or strategy1/2/3)
    */
   public static void main(String[] args) {
     final String redDeckPath = args[0];
@@ -31,16 +41,20 @@ public final class PawnsGame {
     final DeckReader reader = new DeckReader();
     final List<Card> redDeck = reader.readDeck(redDeckPath);
     final List<Card> blueDeck = reader.readDeckReverse(blueDeckPath);
+
     final Player redPlayer = new SimplePlayer(5, true);
     final Player bluePlayer = new SimplePlayer(5, false);
     redPlayer.setDeck(redDeck);
     bluePlayer.setDeck(blueDeck);
     final Board board = new GameBoard(5, 7);
     board.startGame(redPlayer, bluePlayer);
+    final ReadonlyPawnsBoardModel adapter = new ModelAdapter(redPlayer, bluePlayer, board);
     PawnsBoardGame redView = new PawnsBoardGame(board, redPlayer);
-    PawnsBoardGame blueView = new PawnsBoardGame(board, bluePlayer);
+    PBFrame blueFrame = new PBFrame(adapter, PlayerEnum.Blue);
+    PawnsBoardViewInterface blueViewAdapter = new PBViewAdapter(blueFrame);
     final Strategy redStrategy = getStrat(redPlayerType);
     final Strategy blueStrategy = getStrat(bluePlayerType);
+
     PawnsGameController redController;
     if (redStrategy == null) {
       redController = new PawnsGameController(redView, board, redPlayer);
@@ -48,28 +62,30 @@ public final class PawnsGame {
     } else {
       redController = new PawnsGameController(redView, board, redPlayer, redStrategy);
     }
-
     PawnsGameController blueController;
     if (blueStrategy == null) {
-      blueController = new PawnsGameController(blueView, board, bluePlayer);
-      blueView.setViewListener(blueController);
+      blueController = new PawnsGameController(blueViewAdapter, board, bluePlayer);
     } else {
-      blueController = new PawnsGameController(blueView, board, bluePlayer, blueStrategy);
+      blueController = new PawnsGameController(blueViewAdapter, board, bluePlayer, blueStrategy);
     }
+
+    PBControllerAdapter blueControllerAdapter =
+        new PBControllerAdapter(blueController, board, bluePlayer, PlayerEnum.Blue);
+    blueFrame.addListener(blueControllerAdapter);
     SwingUtilities.invokeLater(() -> {
       redView.makeVisible();
-      blueView.makeVisible();
-
+      blueFrame.makeVisible();
       if (redStrategy != null) {
-        System.out.println("Red: " + redStrategy.getClass().getSimpleName());
+        System.out.println("Red is " + redStrategy.getClass().getSimpleName());
         redController.playGame();
       }
+
       if (blueStrategy != null) {
+        System.out.println("Blue is " + blueStrategy.getClass().getSimpleName());
         blueController.playGame();
       }
     });
   }
-
 
   private static Strategy getStrat(String type) {
     switch (type) {
@@ -86,5 +102,4 @@ public final class PawnsGame {
         return null;
     }
   }
-
 }
