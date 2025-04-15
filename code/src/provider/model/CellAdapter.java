@@ -1,38 +1,32 @@
 package provider.model;
 
+import java.util.List;
 import model.Cell;
 import model.Player;
+import model.card.Card;
 import model.card.GameCard;
+import model.card.Pawn;
 
 public class CellAdapter implements ProviderCell {
 
   public final Cell cell;
-  private PlayerEnum owner;
-  private Pawns pawns;
-  private ProviderCard card;
 
-  public CellAdapter(Cell cell, Player owner) {
-    PlayerEnum owner1;
+  public CellAdapter(Cell cell) {
     if (cell == null) {
-      throw new IllegalArgumentException("Cell cannot be null");
+      throw new IllegalArgumentException("Cell argument cannot be null");
     }
     this.cell = cell;
 
-    if (owner == null) {
-      owner1 = PlayerEnum.None;
-      return;
-    }
-    if (owner.getIsRed()) {
-      owner1 = PlayerEnum.Red;
-    } else  {
-      owner1 = PlayerEnum.Blue;
-    }
-    this.owner = owner1;
   }
 
   @Override
   public PlayerEnum getOwner() {
-    return owner;
+    List<Pawn> pawns = cell.getPawns();
+    if (pawns.isEmpty()) {
+      return PlayerEnum.None;
+    }
+    Player owner = pawns.get(0).getOwner();
+    return owner.getIsRed() ? PlayerEnum.Red : PlayerEnum.Blue;
   }
 
   @Override
@@ -42,30 +36,32 @@ public class CellAdapter implements ProviderCell {
 
   @Override
   public ProviderCard getCard() {
-    return null;
+    Card card =  this.cell.getCard();
+    if (card == null) {
+      return null;
+    }
+    Player owner = card.getOwner();
+    return new CardAdapter(card);
   }
 
   @Override
   public int getScore() {
-    return 0;
+    Card card  = this.cell.getCard();
+    return (card != null) ? card.getValue() : 0;
   }
 
   @Override
   public void addPawn() {
-    try {
-      pawns.increment();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    throw new UnsupportedOperationException("Not supported yet.");
   }
 
   @Override
   public void placeCard(ProviderCard providerCard) {
-    this.cell.setCard(new GameCard(providerCard.getName(), providerCard.getInfluence()));
+    throw new UnsupportedOperationException("Not supported yet.");
   }
 
   @Override
   public void changeOwner(PlayerEnum newOwner) {
-    this.owner = newOwner;
+    throw new UnsupportedOperationException("Not supported yet.");
   }
 }

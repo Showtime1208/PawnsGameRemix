@@ -54,16 +54,21 @@ public class CardAdapter implements ProviderCard {
 
   @Override
   public int getCost() {
-    return card.getCost();  // Use  card's cost
+    return card.getCost();
   }
 
   @Override
   public int getValue() {
-    return card.getValue();  // Use  card's value
+    return card.getValue();
   }
 
   @Override
   public void flipInfluence() {
     this.isFlipped = !this.isFlipped;
+  }
+
+  @Override
+  public String toString() {
+    return getName() + "\nCost: " + getCost() + "\nValue: " + getValue();
   }
 }
