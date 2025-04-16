@@ -1,0 +1,19 @@
+Design Reflections & Lessons Learned
+Reflecting on this project, the main element I would change in my own
+design is making the view less complex and component-heavy from the start.
+While everything worked fine in the end, a more streamlined view would have further
+simplified integration for other teams. Even so, I learned an important lesson: even
+when designs differ significantly, a well-structured adapter can bridge the gap.
+Seeing how easily the provider’s code fit into our model and controller logic
+underscored how flexible interfaces and good abstraction principles can save a
+lot of time and effort.
+
+Experience with the Provider and Customer Teams
+I had a very smooth experience with both my provider and customer teams.
+My customers didn’t need any additional support, as our code appears to have
+integrated smoothly into their systems without questions. On the provider side,
+the only real assistance I needed was some missing documentation, which they promptly
+provided. Communication was minimal but effective, and it highlighted how even small
+clarifications can prevent confusion and speed up the integration process. Overall,
+the collaboration was easy, and I feel more confident in designing interfaces that
+accommodate different implementations going forward.

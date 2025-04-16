@@ -183,3 +183,6 @@ PawnsGameController
 - Connects view events to model actions
 - Ensures valid moves and proper turn order
 - Displays game status and error messages to players
+
+Final Functionality-
+Complete functionality for AI players and human players on the two different views.
