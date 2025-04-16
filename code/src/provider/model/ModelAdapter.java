@@ -66,7 +66,7 @@ public class ModelAdapter implements ReadonlyPawnsBoardModel {
   @Override
   public PlayerEnum getTurn() {
     boolean turn = board.getTurn();
-    return turn ? PlayerEnum.Red : PlayerEnum.Blue;
+    return turn ? PlayerEnum.Blue : PlayerEnum.Red;
   }
 
   @Override
@@ -115,7 +115,7 @@ public class ModelAdapter implements ReadonlyPawnsBoardModel {
     if (board.isGameOver()) {
       return false;
     }
-    if (row  < 0 || row >= board.getHeight() || col < 0 || col >= board.getWidth()) {
+    if (row < 0 || row >= board.getHeight() || col < 0 || col >= board.getWidth()) {
       return false;
     }
     if (board.getCell(row, col).getCard() != null) {
@@ -123,20 +123,19 @@ public class ModelAdapter implements ReadonlyPawnsBoardModel {
     }
     PlayerEnum turn = getTurn();
     Player current = (turn == PlayerEnum.Red) ? player1 : player2;
+    if (handIdx < 0 || handIdx >= current.getHandSize()) {
+      return false;
+    }
+
     if (board.getCell(row, col).getPawns().isEmpty()) {
       return false;
     }
     if (!board.getCell(row, col).getPawns().get(0).getOwner().equals(current)) {
       return false;
     }
-    if (handIdx < 0 || handIdx >= current.getHandSize()) {
-      return false;
-    }
+
     Card chosenCard = current.getHand().get(handIdx);
-    if (chosenCard.getCost() > board.getCell(row, col).getPawns().size()) {
-      return false;
-    }
-    return true;
+    return chosenCard.getCost() <= board.getCell(row, col).getPawns().size();
   }
 
   @Override
