@@ -170,6 +170,12 @@ Updates for pt. 3:
 Controller
 The game now includes a fully implemented controller system that connects playerEnum actions to the game:
 
+Command Line args:
+The first two args are the paths to the red and blue decks, respectively.
+After that, args 3 and 4 are either "human" - indicating a human player, or
+"strategyx" -indicating an ai player, with x representing whatever strategy number they
+would like to use.
+
 PawnsGameController
 - Handles both human and AI players
 - Manages turn-based gameplay
@@ -177,3 +183,6 @@ PawnsGameController
 - Connects view events to model actions
 - Ensures valid moves and proper turn order
 - Displays game status and error messages to players
+
+Final Functionality-
+Complete functionality for AI players and human players on the two different views.
