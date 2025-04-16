@@ -1,0 +1,37 @@
+Design Critique
+The overall design of the code was clear and easy to integrate.
+The interfaces were particularly flexible, allowing us to plug in our own model
+and controllers without having to rewrite large sections of their code.
+This indicates thoughtful architecture and an understanding that other
+groups might rely on those interfaces. The logical separation between
+the model interfaces and the view classes was especially helpful, as we
+could focus on hooking up our model without worrying about how everything
+was laid out.
+
+Implementation Critique
+Implementation details were mostly well thought out. Their view code,
+in particular, was straightforward to adapt, requiring only a small
+number of adjustments or adapter methods on our end. The code’s overall
+structure also made it easy to locate relevant classes and interfaces.
+One area that could be improved is the resizing logic: when the window
+size changes, the interface currently clips the view instead of resizing
+it smoothly. It would be beneficial to implement some logic that
+recalculates component sizes or uses a more dynamic layout.
+
+Documentation Critique
+The documentation was concise but effective.
+Even though not every method was explained in-depth,
+the comments that were provided helped us quickly grasp
+how to connect our model to their view. We also appreciated
+that they included short summaries at the top of their classes,
+explaining each class’s purpose. More thorough Javadoc or additional
+diagrams could further strengthen the documentation, but in general,
+it was sufficient for our needs.
+
+Design/Code Limitations and Suggestions
+The main limitation we found was the lack of a robust resizing
+mechanism in the GUI. If the window is resized to be too small,
+part of the interface is simply cut off, which affects the usability
+for end-users. Implementing a logical view would allow the interface to adapt easily
+to different window sizes. Otherwise, their code was well structured, easy to
+adapt, and offered us a solid foundation for our own integration efforts.
