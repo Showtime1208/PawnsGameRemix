@@ -5,22 +5,28 @@ package model.card;
  * or not it influences the square.
  */
 public class SimpleInfluence implements Influence {
-
-  private final boolean influence;
+  private final InfluenceKind kind;
 
   /**
    * SimpleInfluence constructor.
    *
-   * @param influence the influence.
+   * @param kind the influence.
    */
-  public SimpleInfluence(boolean influence) {
-    this.influence = influence;
+  public SimpleInfluence(InfluenceKind kind) {
+
+    this.kind = kind;
   }
 
   @Override
   public boolean getInfluence() {
-    return influence;
+    return kind != InfluenceKind.NONE;
   }
+
+  @Override
+  public InfluenceKind getInfluenceKind() {
+    return kind;
+  }
+
 
 
 }

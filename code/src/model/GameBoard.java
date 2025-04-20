@@ -140,7 +140,7 @@ public class GameBoard implements Board {
 
   }
 
-  private void applyInfluence(Player player, Card card, int placedRow, int placedCol) {
+  protected void applyInfluence(Player player, Card card, int placedRow, int placedCol) {
     Influence[][] grid = card.getInfluenceArray();
     for (int row = 0; row < 5; row++) {
       for (int col = 0; col < 5; col++) {
@@ -177,7 +177,7 @@ public class GameBoard implements Board {
     }
   }
 
-  private boolean isInBounds(int row, int col) {
+  protected boolean isInBounds(int row, int col) {
     return (row >= 0 && row < rowSize && col >= 0 && col < colSize);
   }
 
@@ -347,6 +347,10 @@ public class GameBoard implements Board {
       throw new IndexOutOfBoundsException("Invalid cell indices");
     }
     return board[row][col].getCard(); // Correct
+  }
+
+  protected boolean isGameStart() {
+    return gameStart;
   }
 
 

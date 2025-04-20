@@ -1,14 +1,17 @@
 package provider;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import model.card.Card;
 import model.card.Influence;
 import model.card.SimpleInfluence;
+import org.junit.Before;
+import org.junit.Test;
 import provider.model.ModelAdapter;
 import provider.model.PlayerEnum;
 import provider.model.ProviderCard;
@@ -16,13 +19,13 @@ import strategy.MockBoard;
 import strategy.MockCard;
 import strategy.MockPlayer;
 
-import static org.junit.Assert.*;
-
+/**
+ * Test class for the model adapter. Tests to ensure that the adapter correctly
+ * delegates and receives info from the functional model.
+ */
 public class ModelAdapterTest {
+
   private StringBuilder log;
-  private MockPlayer redPlayer;
-  private MockPlayer bluePlayer;
-  private MockBoard board;
   private ModelAdapter adapter;
 
   @Before
@@ -46,11 +49,11 @@ public class ModelAdapterTest {
     }
 
     // Create players with decks
-    redPlayer = new MockPlayer(log, true, redDeck);
-    bluePlayer = new MockPlayer(log, false, blueDeck);
+    MockPlayer redPlayer = new MockPlayer(log, true, redDeck);
+    MockPlayer bluePlayer = new MockPlayer(log, false, blueDeck);
 
     // Create board (3x5 board)
-    board = new MockBoard(log, 5, 3, false, redPlayer, bluePlayer);
+    MockBoard board = new MockBoard(log, 5, 3, false, redPlayer, bluePlayer);
     board.startGame(redPlayer, bluePlayer);
 
     adapter = new ModelAdapter(redPlayer, bluePlayer, board);

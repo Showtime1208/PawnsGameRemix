@@ -141,7 +141,7 @@ public class DeckReader implements Reader {
         if (ch == 'C') {
           throw new IllegalArgumentException("Invalid 'C' found outside center for card");
         }
-        if (ch != 'X' && ch != 'I') {
+        if (ch != 'X' && ch != 'I' && ch != 'U' && ch != 'D') {
           throw new IllegalArgumentException("Invalid character in grid for card");
         }
       }
@@ -193,11 +193,19 @@ public class DeckReader implements Reader {
     for (int row = 0; row < 5; row++) {
       for (int col = 0; col < 5; col++) {
         char ch = charGrid[row][col];
-        if (ch == 'I') {
-          influenceArray[row][col] = new SimpleInfluence(true);
-        } else { // 'C' or 'X'
-          influenceArray[row][col] = new SimpleInfluence(false);
+        switch (ch) {
+          case 'C':
+          case 'I':
+            influenceArray[row][col] = new SimpleInfluence(InfluenceKind.CLAIM);
+          break;
+          case 'U': influenceArray[row][col] = new SimpleInfluence(InfluenceKind.UPGRADE);
+          break;
+          case 'D': influenceArray[row][col] = new SimpleInfluence(InfluenceKind.DEVALUE);
+          break;
+          default: influenceArray[row][col] = new SimpleInfluence(InfluenceKind.NONE);
+          break;
         }
+
       }
     }
     return influenceArray;

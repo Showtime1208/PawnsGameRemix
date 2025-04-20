@@ -5,51 +5,54 @@ import model.Board;
 import model.Player;
 import provider.model.PlayerEnum;
 
+/**
+ * Adapter Class for the PBController. Adapts the PawnsGameController methods in order to create
+ * compatibility with the provider view.
+ */
 public class PBControllerAdapter implements PBController {
 
   private final PawnsGameController controller;
   private final Board board;
   private final Player player;
-  private final PlayerEnum me;
 
   /**
    * Creates a new controller adapter.
    *
    * @param controller our game controller
-   * @param board the game board
-   * @param player the player this controller represents
-   * @param me the player enum (Red/Blue) from provider's implementation
+   * @param board      the game board
+   * @param player     the player this controller represents
+   * @param me         the player enum (Red/Blue) from provider's implementation
    * @throws IllegalArgumentException if any argument is null
    */
 
-  public PBControllerAdapter(PawnsGameController controller, Board board, Player player, PlayerEnum me) {
+  public PBControllerAdapter(PawnsGameController controller, Board board, Player player,
+      PlayerEnum me) {
     if (controller == null || board == null || player == null || me == null) {
       throw new IllegalArgumentException("Arguments cannot be null");
     }
     this.controller = controller;
     this.board = board;
     this.player = player;
-    this.me = me;
   }
 
   @Override
   public void startGame() {
-
+    throw new UnsupportedOperationException("Not supported yet.");
   }
 
   @Override
   public void yourTurn() {
-
+    throw new UnsupportedOperationException("Not supported yet.");
   }
 
   @Override
   public void gameOver() {
-
+    throw new UnsupportedOperationException("Not supported yet.");
   }
 
   @Override
   public void refreshView() {
-
+    throw new UnsupportedOperationException("Not supported yet.");
   }
 
   @Override

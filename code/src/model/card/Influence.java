@@ -10,7 +10,9 @@ public interface Influence {
    *
    * @return whether or not the square should be influenced.
    */
-  public boolean getInfluence();
+  boolean getInfluence();
+
+  InfluenceKind getInfluenceKind();
 
 
 }

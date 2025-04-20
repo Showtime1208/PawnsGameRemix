@@ -39,4 +39,13 @@ public interface Cell {
    */
   public void addPawn(Player owner);
 
+  /**
+   *
+   */
+  public int getValueModifier();
+
+  public void changeValueModifier(int value);
+
+  public void resetValueModifier();
+
 }

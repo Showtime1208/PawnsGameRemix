@@ -1,8 +1,8 @@
 package provider.model;
 
 /**
- * An interface for an observer of the model. Allows an observer to gain information
- * anytime the model reaches a certain state.
+ * An interface for an observer of the model. Allows an observer to gain information anytime the
+ * model reaches a certain state.
  */
 public interface ModelStatus {
 

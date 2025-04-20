@@ -13,6 +13,7 @@ public class GameCell implements Cell {
 
   private Card card;
   private List<Pawn> pawns;
+  private int valueMod = 0;
 
   /**
    * Constructor for the gameCell.
@@ -43,7 +44,7 @@ public class GameCell implements Cell {
 
   @Override
   public void setCard(Card card) {
-    if (card != null && card.getCost() <= pawns.size()) {
+    if (card.getCost() <= pawns.size()) {
       this.card = card;
     } else {
       throw new IllegalArgumentException("Card is null/too large.");
@@ -65,5 +66,20 @@ public class GameCell implements Cell {
     } else {
       throw new IllegalStateException("Pawns in square have a different owner");
     }
+  }
+
+  @Override
+  public int getValueModifier() {
+    return valueMod;
+  }
+
+  @Override
+  public void changeValueModifier(int value) {
+    valueMod += value;
+  }
+
+  @Override
+  public void resetValueModifier() {
+    valueMod = 0;
   }
 }

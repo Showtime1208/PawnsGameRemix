@@ -27,11 +27,8 @@ public final class PawnsGame {
 
   /**
    * Main entry point.
-   *
-   * args[0] = red deck path
-   * args[1] = blue deck path
-   * args[2] = red player type (human or strategy1/2/3)
-   * args[3] = blue player type (human or strategy1/2/3)
+   * args[0] = red deck path args[1] = blue deck path args[2] = red player type (human or
+   * strategy1/2/3) args[3] = blue player type (human or strategy1/2/3)
    */
   public static void main(String[] args) {
     final String redDeckPath = args[0];

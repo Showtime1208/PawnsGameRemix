@@ -4,13 +4,21 @@ import java.util.List;
 import model.Cell;
 import model.Player;
 import model.card.Card;
-import model.card.GameCard;
 import model.card.Pawn;
 
+/**
+ * Adapter class for the Cells of the board. Take the GameBoard's cells and turns them into
+ * ProviderCells in order to create compatibility with the view.
+ */
 public class CellAdapter implements ProviderCell {
 
   public final Cell cell;
 
+  /**
+   * Constructor for the cell adapter.
+   *
+   * @param cell the cell that will be adapted.
+   */
   public CellAdapter(Cell cell) {
     if (cell == null) {
       throw new IllegalArgumentException("Cell argument cannot be null");
@@ -36,7 +44,7 @@ public class CellAdapter implements ProviderCell {
 
   @Override
   public ProviderCard getCard() {
-    Card card =  this.cell.getCard();
+    Card card = this.cell.getCard();
     if (card == null) {
       return null;
     }
@@ -46,7 +54,7 @@ public class CellAdapter implements ProviderCell {
 
   @Override
   public int getScore() {
-    Card card  = this.cell.getCard();
+    Card card = this.cell.getCard();
     return (card != null) ? card.getValue() : 0;
   }
 

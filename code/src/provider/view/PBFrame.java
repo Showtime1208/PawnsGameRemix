@@ -1,7 +1,6 @@
 package provider.view;
 
 import javax.swing.JFrame;
-
 import provider.model.PlayerEnum;
 import provider.model.ReadonlyPawnsBoardModel;
 

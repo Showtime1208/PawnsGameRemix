@@ -18,6 +18,7 @@ public interface PBGUIView {
 
   /**
    * set the controller to handle  events in the view.
+   *
    * @param listener the controller
    */
   void addListener(PlayerAction listener);
@@ -30,6 +31,7 @@ public interface PBGUIView {
 
   /**
    * creates a panel displaying a message.
+   *
    * @param msg the message to be displayed
    */
   void showMessage(String msg);

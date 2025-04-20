@@ -6,13 +6,25 @@ import model.Player;
 import model.ReadOnlyBoard;
 import model.card.Card;
 
+/**
+ * Adapter class for the main game model. Takes the ReadOnlyBoard interface and adapts it to fit the
+ * ReadONlyPawnsBoardModel interface to create compatibility with the provider view.
+ */
 public class ModelAdapter implements ReadonlyPawnsBoardModel {
+
   private Player player1;
   private Player player2;
   private ReadOnlyBoard board;
 
+  /**
+   * Constructor for the model adapter.
+   *
+   * @param player1 the first Player in the game to be adapted.
+   * @param player2 the second Player in the game to be adapted.
+   * @param board   the ReadOnlyBoard that will be adapted.
+   */
   public ModelAdapter(Player player1, Player player2, ReadOnlyBoard board) {
-    if (player1 == null || player2 == null ||  board == null) {
+    if (player1 == null || player2 == null || board == null) {
       throw new IllegalArgumentException();
     }
     this.player1 = player1;
@@ -40,12 +52,14 @@ public class ModelAdapter implements ReadonlyPawnsBoardModel {
     if (!board.isGameOver()) {
       throw new IllegalStateException();
     }
-    Player winner =  board.getWinner();
+    Player winner = board.getWinner();
     if (winner == null) {
       return PlayerEnum.None;
     } else if (winner == player1) {
       return PlayerEnum.Red;
-    } else return PlayerEnum.Blue;
+    } else {
+      return PlayerEnum.Blue;
+    }
   }
 
   @Override
@@ -71,8 +85,8 @@ public class ModelAdapter implements ReadonlyPawnsBoardModel {
 
   @Override
   public ProviderCell[][] getBoard() {
-    int rowSize =  board.getHeight();
-    int colSize =  board.getWidth();
+    int rowSize = board.getHeight();
+    int colSize = board.getWidth();
     ProviderCell[][] board = new ProviderCell[rowSize][colSize];
     for (int row = 0; row < rowSize; row++) {
       for (int col = 0; col < colSize; col++) {
@@ -95,10 +109,10 @@ public class ModelAdapter implements ReadonlyPawnsBoardModel {
   @Override
   public PlayerEnum getOwnerOf(int row, int col) {
     if (board.getCell(row, col).getCard() != null) {
-      Player cardOwner =  board.getCell(row, col).getCard().getOwner();
+      Player cardOwner = board.getCell(row, col).getCard().getOwner();
       if (cardOwner == player1) {
         return PlayerEnum.Red;
-      } else  if (cardOwner == player2) {
+      } else if (cardOwner == player2) {
         return PlayerEnum.Blue;
       }
     }

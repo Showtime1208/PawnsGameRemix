@@ -28,6 +28,7 @@ public class HandDisplayPanel extends JPanel {
 
   /**
    * Constructor for the hand display panel. Is unique based on each player.
+   *
    * @param parent the parent view.
    * @param player the player's hand.
    */

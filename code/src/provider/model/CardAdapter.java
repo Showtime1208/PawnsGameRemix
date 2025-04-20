@@ -2,13 +2,21 @@ package provider.model;
 
 import model.card.Card;
 import model.card.Influence;
-import provider.model.CardOwner;
-import provider.model.ProviderCard;
 
+/**
+ * Adapter Class for the Cards. Adapts the current Card interface and SimpleCard implementation into
+ * the ProviderCard format for compatibility with the view and model.
+ */
 public class CardAdapter implements ProviderCard {
+
   private final Card card;
   private boolean isFlipped;
 
+  /**
+   * Constructor for the card adapter. Takes the current card and turns it into ProviderCard form.
+   *
+   * @param card the Card that will be adapted.
+   */
   public CardAdapter(Card card) {
     if (card == null) {
       throw new IllegalArgumentException("Card cannot be null");
