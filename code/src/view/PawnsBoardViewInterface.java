@@ -1,6 +1,7 @@
 package view;
 
 import model.Board;
+import model.Player;
 
 /**
  * The view interface for the PawnsBoard game. It defines methods for updating the board, handling
@@ -19,7 +20,7 @@ public interface PawnsBoardViewInterface {
   /**
    * Refresh the board display to show the current board.
    */
-  void refreshBoard(Board board);
+  void refreshBoard(Board board, Player player);
 
   /**
    * highlight a specified cell on the board.

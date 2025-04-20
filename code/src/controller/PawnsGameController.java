@@ -74,7 +74,7 @@ public class PawnsGameController implements Controller {
     }
     this.selectedRow = row;
     this.selectedCol = col;
-    view.refreshBoard(board);
+    view.refreshBoard(board, player);
   }
 
   @Override
@@ -82,7 +82,7 @@ public class PawnsGameController implements Controller {
     if (board.isGameOver()) {
       announceGameOver();
     }
-    view.refreshBoard(board);
+    view.refreshBoard(board, player);
   }
 
   @Override
@@ -91,7 +91,7 @@ public class PawnsGameController implements Controller {
       announceGameOver();
     }
     this.cardIdx = cardIndex;
-    view.refreshBoard(board);
+    view.refreshBoard(board, player);
   }
 
 
@@ -128,7 +128,7 @@ public class PawnsGameController implements Controller {
       }
 
     }
-    view.refreshBoard(board);
+    view.refreshBoard(board, player);
   }
 
   @Override
@@ -157,7 +157,7 @@ public class PawnsGameController implements Controller {
     if (board.isGameOver()) {
       announceGameOver();
     }
-    view.refreshBoard(board);
+    view.refreshBoard(board, player);
   }
 
 

@@ -2,6 +2,7 @@ package provider.view;
 
 import javax.swing.SwingUtilities;
 import model.Board;
+import model.Player;
 import view.PawnsBoardViewInterface;
 import view.PawnsBoardViewListener;
 
@@ -29,7 +30,7 @@ public class PBViewAdapter implements PawnsBoardViewInterface {
   }
 
   @Override
-  public void refreshBoard(Board board) {
+  public void refreshBoard(Board board, Player player) {
     SwingUtilities.invokeLater(providerView::refresh);
   }
 

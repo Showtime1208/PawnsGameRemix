@@ -31,7 +31,7 @@ public class PawnsBoardGame extends JFrame implements PawnsBoardViewInterface {
     setLayout(new BorderLayout());
 
     // Initialize clearly
-    boardView = new PawnsBoardView(model);
+    boardView = new UpdatedPawnsBoardView(model);
     handView = new PlayerHandView(player);
 
     redScorePanel = new ScorePanel(model, model.getP1(), 90);
@@ -68,10 +68,10 @@ public class PawnsBoardGame extends JFrame implements PawnsBoardViewInterface {
   }
 
   @Override
-  public void refreshBoard(Board board) {
+  public void refreshBoard(Board board, Player player) {
     // Update all panels clearly
     boardView.repaint();
-    handView.updateHand(board.getP1().getHand());
+    handView.updateHand(player.getHand());
     redScorePanel.repaint();
     blueScorePanel.repaint();
     this.setTitle(board.getTurn() ? "red" : "blue");

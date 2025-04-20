@@ -64,4 +64,19 @@ public class MockCell implements Cell {
         .append("\n");
     pawns.add(new SimplePawn(owner));
   }
+
+  @Override
+  public int getValueModifier() {
+    return 0;
+  }
+
+  @Override
+  public void changeValueModifier(int value) {
+
+  }
+
+  @Override
+  public void resetValueModifier() {
+
+  }
 }

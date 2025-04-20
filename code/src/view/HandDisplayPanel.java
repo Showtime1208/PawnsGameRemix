@@ -110,10 +110,8 @@ public class HandDisplayPanel extends JPanel {
         // Highlight the middle cell with orange.
         if (r == 2 && c == 2) {
           g2d.setColor(Color.ORANGE);
-        } else if (influence[r][c].getInfluence()) {
-          g2d.setColor(Color.CYAN);
         } else {
-          g2d.setColor(Color.LIGHT_GRAY);
+          g2d.setColor(InfluenceLegend.colorOf(influence[r][c].getInfluenceKind()));
         }
         g2d.fillRect(cellX, cellY, INFLUENCE_CELL_SIZE, INFLUENCE_CELL_SIZE);
         g2d.setColor(Color.BLACK);
