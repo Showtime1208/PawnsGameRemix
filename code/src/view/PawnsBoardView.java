@@ -29,7 +29,7 @@ public class PawnsBoardView extends JPanel {
   private static final int PAWN_SPACING = 5;
   private final ReadOnlyBoard model;
   private double scaleFactor;
-  private Point highlightedCell;
+  protected Point highlightedCell; // Changed to protected for subclass access
   private CellClickListener cellClickListener;
 
   /**
@@ -169,6 +169,40 @@ public class PawnsBoardView extends JPanel {
   public void addClickListener(CellClickListener listener) {
     this.cellClickListener = listener;
   }
+
+  /**
+   * Gets the currently highlighted cell.
+   *
+   * @return the Point representing the highlighted cell, or null if no cell is highlighted
+   */
+  protected Point getHighlightedCell() {
+    return highlightedCell != null ? new Point(highlightedCell) : null;
+  }
+
+  /**
+   * Gets the model associated with this view.
+   *
+   * @return the ReadOnlyBoard model
+   */
+  protected ReadOnlyBoard getModel() {
+    return model;
+  }
+
+  /**
+   * Gets the current scale factor for the board.
+   *
+   * @return the current scale factor
+   */
+  protected double getScaleFactor() {
+    return scaleFactor;
+  }
+
+  /**
+   * Gets the cell size used for rendering.
+   *
+   * @return the cell size in pixels
+   */
+  protected static int getCellSize() {
+    return CELL_SIZE;
+  }
 }
-
-

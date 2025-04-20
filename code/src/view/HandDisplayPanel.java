@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import model.Player;
 import model.card.Card;
 import model.card.Influence;
+import model.card.InfluenceKind;
 
 /**
  * A panel for displaying the player's hand.
@@ -52,6 +53,11 @@ public class HandDisplayPanel extends JPanel {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g.create();
 
+    HighContrastMode highContrastMode = parent.getHighContrastMode();
+    boolean isHighContrast = highContrastMode != null && highContrastMode.isEnabled();
+
+    setBackground(isHighContrast ? Color.BLACK : Color.WHITE);
+
     int startX = PlayerHandView.CARD_SPACING;
     int startY = PlayerHandView.CARD_SPACING;
     List<Card> hand = parent.getPlayerHand();
@@ -62,43 +68,37 @@ public class HandDisplayPanel extends JPanel {
       int x = startX + i * (PlayerHandView.CARD_WIDTH + PlayerHandView.CARD_SPACING);
       int y = startY;
       Card card = hand.get(i);
+
       if (i == selectedIndex) {
-        Color color = player.getIsRed() ? Color.RED : Color.BLUE;
-        g2d.setColor(color);
+        Color highlightColor;
+        if (isHighContrast) {
+          highlightColor = highContrastMode.getPlayerColor(player.getIsRed());
+        } else {
+          highlightColor = player.getIsRed() ? Color.RED : Color.BLUE;
+        }
+        g2d.setColor(highlightColor);
         g2d.fillRect(x - 3, y - 3, PlayerHandView.CARD_WIDTH + 6, PlayerHandView.CARD_HEIGHT + 6);
       }
 
-      // Draw card background.
-      g2d.setColor(new Color(240, 240, 240));
+      g2d.setColor(isHighContrast ? Color.BLACK : new Color(240, 240, 240));
       g2d.fillRect(x, y, PlayerHandView.CARD_WIDTH, PlayerHandView.CARD_HEIGHT);
 
-      // Draw card border.
-      g2d.setColor(Color.BLACK);
+      g2d.setColor(isHighContrast ? Color.WHITE : Color.BLACK);
       g2d.drawRect(x, y, PlayerHandView.CARD_WIDTH, PlayerHandView.CARD_HEIGHT);
 
-      // Draw card details.
       g2d.setFont(new Font("Arial", Font.BOLD, 12));
-      g2d.setColor(Color.BLACK);
+      g2d.setColor(isHighContrast ? Color.WHITE : Color.BLACK);
       g2d.drawString(card.getName(), x + 5, y + 15);
       g2d.drawString("Cost: " + card.getCost(), x + 5, y + 30);
       g2d.drawString("Value: " + card.getValue(), x + 5, y + 45);
 
-      // Draw the influence grid for the card below the details.
-      drawInfluenceGrid(g2d, card, x + 5, y + 50);
+      drawInfluenceGrid(g2d, card, x + 5, y + 50, isHighContrast, highContrastMode);
     }
     g2d.dispose();
   }
 
-  /**
-   * Draws the influence grid for the specified card.
-   *
-   * @param g2d    the Graphics2D context
-   * @param card   the card whose influence grid is drawn
-   * @param startX the x-coordinate to start drawing the grid
-   * @param startY the y-coordinate to start drawing the grid
-   */
-  private void drawInfluenceGrid(Graphics2D g2d, Card card, int startX, int startY) {
-    // Assuming card.getInfluenceArray() returns a 2D array of Influence objects.
+  private void drawInfluenceGrid(Graphics2D g2d, Card card, int startX, int startY,
+                                 boolean isHighContrast, HighContrastMode highContrastMode) {
     Influence[][] influence = card.getInfluenceArray();
     int rows = influence.length;
     int cols = influence[0].length;
@@ -107,16 +107,52 @@ public class HandDisplayPanel extends JPanel {
       for (int c = 0; c < cols; c++) {
         int cellX = startX + c * INFLUENCE_CELL_SIZE;
         int cellY = startY + r * INFLUENCE_CELL_SIZE;
-        // Highlight the middle cell with orange.
+
+        Color cellColor;
         if (r == 2 && c == 2) {
-          g2d.setColor(Color.ORANGE);
+          // Center cell
+          cellColor = isHighContrast ? Color.YELLOW : Color.ORANGE;
         } else {
-          g2d.setColor(InfluenceLegend.colorOf(influence[r][c].getInfluenceKind()));
+          InfluenceKind kind = influence[r][c].getInfluenceKind();
+          if (isHighContrast) {
+            switch (kind) {
+              case CLAIM:
+                cellColor = highContrastMode.getPlayerColor(player.getIsRed());
+                break;
+              case UPGRADE:
+                cellColor = Color.GREEN;
+                break;
+              case DEVALUE:
+                cellColor = Color.RED;
+                break;
+              default:
+                cellColor = Color.DARK_GRAY;
+                break;
+            }
+          } else {
+            cellColor = InfluenceLegend.colorOf(kind);
+          }
         }
+
+        // Draw cell background
+        g2d.setColor(cellColor);
         g2d.fillRect(cellX, cellY, INFLUENCE_CELL_SIZE, INFLUENCE_CELL_SIZE);
-        g2d.setColor(Color.BLACK);
+
+        // Draw cell border
+        g2d.setColor(isHighContrast ? Color.WHITE : Color.BLACK);
         g2d.drawRect(cellX, cellY, INFLUENCE_CELL_SIZE, INFLUENCE_CELL_SIZE);
       }
     }
+  }
+
+  @Override
+  public void repaint() {
+    if (parent != null && parent.getHighContrastMode() != null
+            && parent.getHighContrastMode().isEnabled()) {
+      setBackground(Color.BLACK);
+    } else {
+      setBackground(Color.WHITE);
+    }
+    super.repaint();
   }
 }

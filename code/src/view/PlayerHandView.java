@@ -33,11 +33,13 @@ public class PlayerHandView extends JPanel {
   public static final int CARD_SPACING = 15;
   public static final int MAX_HAND_SIZE = 5;
   public static final int INFLUENCE_CELL_SIZE = 12;
+
   private final HandDisplayPanel handDisplay;
   private final CommandPanel commandPanel;
   private List<Card> playerHand;
   private int selectedCardIndx = -1;
   private HandActionListener listener;
+  private HighContrastMode highContrastMode;
 
   /**
    * Constructs the hand view with the current player's hand.
@@ -47,6 +49,7 @@ public class PlayerHandView extends JPanel {
   public PlayerHandView(Player player) {
     super(new BorderLayout());
     this.playerHand = player.getHand();
+    this.highContrastMode = new HighContrastMode();
     setPreferredSize(new Dimension(BASE_WIDTH, BASE_HEIGHT));
     setBackground(Color.WHITE);
 
@@ -57,6 +60,25 @@ public class PlayerHandView extends JPanel {
     // Add the hand display (cards) in the center and the command panel below.
     add(handDisplay, BorderLayout.CENTER);
     add(commandPanel, BorderLayout.SOUTH);
+  }
+
+  /**
+   * Sets the high contrast mode for this view.
+   *
+   * @param mode the high contrast mode to use
+   */
+  public void setHighContrastMode(HighContrastMode mode) {
+    this.highContrastMode = mode;
+    repaint();
+  }
+
+  /**
+   * Gets the current high contrast mode.
+   *
+   * @return the current high contrast mode
+   */
+  public HighContrastMode getHighContrastMode() {
+    return highContrastMode;
   }
 
   /**
@@ -106,7 +128,7 @@ public class PlayerHandView extends JPanel {
       int cardX = CARD_SPACING + i * (CARD_WIDTH + CARD_SPACING);
       int cardY = CARD_SPACING;
       if (clickX >= cardX && clickX <= cardX + CARD_WIDTH &&
-          clickY >= cardY && clickY <= cardY + CARD_HEIGHT) {
+              clickY >= cardY && clickY <= cardY + CARD_HEIGHT) {
         // Toggle selection: if the clicked card is already selected, unselect it.
         if (selectedCardIndx == i) {
           selectedCardIndx = -1;
@@ -132,7 +154,25 @@ public class PlayerHandView extends JPanel {
     commandPanel.addCommandListener(listener);
   }
 
+  /**
+   * Adds a click listener for hand actions.
+   *
+   * @param listener the HandActionListener implementation.
+   */
   public void addClickListener(HandActionListener listener) {
     this.listener = listener;
+  }
+
+  /**
+   * Updates the background color based on high contrast mode.
+   */
+  @Override
+  public void repaint() {
+    if (highContrastMode != null && highContrastMode.isEnabled()) {
+      setBackground(Color.BLACK);
+    } else {
+      setBackground(Color.WHITE);
+    }
+    super.repaint();
   }
 }
