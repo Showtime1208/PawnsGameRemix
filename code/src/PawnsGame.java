@@ -19,8 +19,8 @@ import strategy.FillFirstStrategy;
 import strategy.MaximizeRowScoreStrategy;
 import strategy.Strategy;
 import view.PawnsBoardGame;
+import view.AccessiblePawnsBoardGame;
 import view.PawnsBoardViewInterface;
-
 
 /**
  * Main class showing how to run PawnsBoardGame (Red) and PBFrame (Blue).
@@ -53,12 +53,18 @@ public final class PawnsGame {
             : new UpdatedGameBoard(5, 7);
     board.startGame(redPlayer, bluePlayer);
 
-    PawnsBoardGame redView = new PawnsBoardGame(board, redPlayer);
-    PawnsBoardGame blueView = new PawnsBoardGame(board, bluePlayer);
-
+    // Create appropriate views based on accessibility mode
+    PawnsBoardGame redView;
+    PawnsBoardGame blueView;
     if (accessibleMode) {
-      redView.getHighContrastMode().toggle();
-      blueView.getHighContrastMode().toggle();
+      redView = new AccessiblePawnsBoardGame(board, redPlayer);
+      blueView = new AccessiblePawnsBoardGame(board, bluePlayer);
+      // Toggle high contrast for both views
+      ((AccessiblePawnsBoardGame)redView).getHighContrastMode().toggle();
+      ((AccessiblePawnsBoardGame)blueView).getHighContrastMode().toggle();
+    } else {
+      redView = new PawnsBoardGame(board, redPlayer);
+      blueView = new PawnsBoardGame(board, bluePlayer);
     }
 
     final Strategy redStrategy = getStrat(redPlayerType);
