@@ -44,6 +44,10 @@ public class GameCell implements Cell {
 
   @Override
   public void setCard(Card card) {
+    if (card == null) {
+      this.card = null;
+      return;
+    }
     if (card.getCost() <= pawns.size()) {
       this.card = card;
     } else {
