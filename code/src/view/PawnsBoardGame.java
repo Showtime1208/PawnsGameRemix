@@ -10,18 +10,18 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import model.Board;
 import model.Player;
+import view.HighContrastMode;
 
 /**
  * The class represents the main frame combining the game board, hand, and scoring panels into a
  * single GUI.
  */
 public class PawnsBoardGame extends JFrame implements PawnsBoardViewInterface {
-
-  private final UpdatedPawnsBoardView boardView; // Changed from PawnsBoardView to UpdatedPawnsBoardView
+  private final UpdatedPawnsBoardView boardView;
   private final PlayerHandView handView;
   private final ScorePanel redScorePanel;
   private final ScorePanel blueScorePanel;
-  private final HighContrastMode highContrastMode;
+  private HighContrastMode highContrastMode = new HighContrastMode();  // Add this line
   private final Player currentPlayer;
 
   /**
@@ -127,7 +127,14 @@ public class PawnsBoardGame extends JFrame implements PawnsBoardViewInterface {
   public void displayMessage(String message) {
     JOptionPane.showMessageDialog(this, message);
   }
-
+  /**
+   * Gets the high contrast mode object.
+   *
+   * @return the HighContrastMode object
+   */
+  public HighContrastMode getHighContrastMode() {
+    return highContrastMode;
+  }
   @Override
   public void makeVisible() {
     setVisible(true);

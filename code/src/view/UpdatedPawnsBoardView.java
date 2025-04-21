@@ -170,14 +170,9 @@ public class UpdatedPawnsBoardView extends PawnsBoardView {
    *
    * @return the Point representing the highlighted cell, or null if no cell is highlighted
    */
-  private Point getHighlightedCell() {
-    try {
-      java.lang.reflect.Field field = PawnsBoardView.class.getDeclaredField("highlightedCell");
-      field.setAccessible(true);
-      return (Point) field.get(this);
-    } catch (Exception e) {
-      return null;
-    }
+  @Override
+  protected Point getHighlightedCell() {
+    return super.getHighlightedCell();
   }
 
   /**
