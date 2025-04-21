@@ -2,17 +2,21 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.geom.AffineTransform;
+import java.util.List;
 import model.Cell;
 import model.ReadOnlyBoard;
-import java.awt.Graphics;
-import java.awt.Point;
 import model.card.Card;
 import model.card.Pawn;
-import java.util.List;
 
+/**
+ * Updated View class. Extends the curent implementation with the accessiblity.
+ */
 public class UpdatedPawnsBoardView extends PawnsBoardView {
+
   private static final int CELL_SIZE = 100;
   private final ReadOnlyBoard board;
   private HighContrastMode highContrastMode;
@@ -26,16 +30,6 @@ public class UpdatedPawnsBoardView extends PawnsBoardView {
     super(model);
     this.board = model;
     this.highContrastMode = new HighContrastMode();
-  }
-
-  /**
-   * Sets the high contrast mode for this view.
-   *
-   * @param mode the high contrast mode to use
-   */
-  public void setHighContrastMode(HighContrastMode mode) {
-    this.highContrastMode = mode;
-    repaint();
   }
 
   @Override
@@ -66,7 +60,7 @@ public class UpdatedPawnsBoardView extends PawnsBoardView {
 
         // Use high contrast colors for modifiers
         g2.setColor(mod > 0 ? highContrastMode.getPlayerColor(true) :
-                highContrastMode.getPlayerColor(false));
+            highContrastMode.getPlayerColor(false));
 
         String string = (mod > 0 ? "+" : "-") + mod;
         int x = col * CELL_SIZE + CELL_SIZE - 28;
@@ -115,10 +109,10 @@ public class UpdatedPawnsBoardView extends PawnsBoardView {
   /**
    * Draws the contents of a cell with appropriate high contrast colors.
    *
-   * @param g2 the graphics context
-   * @param cell the cell to draw
-   * @param x the x coordinate
-   * @param y the y coordinate
+   * @param g2            the graphics context
+   * @param cell          the cell to draw
+   * @param x             the x coordinate
+   * @param y             the y coordinate
    * @param isHighlighted whether the cell is highlighted
    */
   private void drawCellContents(Graphics2D g2, Cell cell, int x, int y, boolean isHighlighted) {
@@ -137,17 +131,17 @@ public class UpdatedPawnsBoardView extends PawnsBoardView {
       // Draw card text
       g2.setColor(Color.BLACK); // Always black text on player color
       String cardInfo = String.format("%s (%d)", card.getName(), card.getValue());
-      g2.drawString(cardInfo, x + 10, y + CELL_SIZE/2);
+      g2.drawString(cardInfo, x + 10, y + CELL_SIZE / 2);
     } else if (!pawns.isEmpty()) {
       // Draw pawns
       boolean isRed = pawns.get(0).getOwner().getIsRed();
       g2.setColor(highContrastMode.getPlayerColor(isRed));
       String pawnInfo = String.format("Pawns: %d", pawns.size());
-      g2.drawString(pawnInfo, x + 10, y + CELL_SIZE/2);
+      g2.drawString(pawnInfo, x + 10, y + CELL_SIZE / 2);
     } else {
       // Empty cell - use white text on black background
       g2.setColor(Color.WHITE);
-      g2.drawString("Empty", x + 10, y + CELL_SIZE/2);
+      g2.drawString("Empty", x + 10, y + CELL_SIZE / 2);
     }
   }
 
@@ -161,8 +155,8 @@ public class UpdatedPawnsBoardView extends PawnsBoardView {
   private boolean isHighlighted(int row, int col) {
     Point highlightedCell = getHighlightedCell();
     return highlightedCell != null &&
-            highlightedCell.x == col &&
-            highlightedCell.y == row;
+        highlightedCell.x == col &&
+        highlightedCell.y == row;
   }
 
   /**
@@ -182,5 +176,19 @@ public class UpdatedPawnsBoardView extends PawnsBoardView {
    */
   public ReadOnlyBoard getBoard() {
     return board;
+  }
+
+  protected HighContrastMode getHighContrastMode() {
+    return highContrastMode;
+  }
+
+  /**
+   * Sets the high contrast mode for this view.
+   *
+   * @param mode the high contrast mode to use
+   */
+  public void setHighContrastMode(HighContrastMode mode) {
+    this.highContrastMode = mode;
+    repaint();
   }
 }

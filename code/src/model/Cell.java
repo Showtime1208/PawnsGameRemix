@@ -40,12 +40,19 @@ public interface Cell {
   public void addPawn(Player owner);
 
   /**
-   *
+   * Returns the value modifier of the cell.
    */
   public int getValueModifier();
 
+  /**
+   * Changes the value modifier of the cell.
+   * @param value the value that will be added to the modifier.
+   */
   public void changeValueModifier(int value);
 
+  /**
+   * Resets the value modifier back to zero.
+   */
   public void resetValueModifier();
 
 }

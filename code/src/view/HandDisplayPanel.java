@@ -98,7 +98,7 @@ public class HandDisplayPanel extends JPanel {
   }
 
   private void drawInfluenceGrid(Graphics2D g2d, Card card, int startX, int startY,
-                                 boolean isHighContrast, HighContrastMode highContrastMode) {
+      boolean isHighContrast, HighContrastMode highContrastMode) {
     Influence[][] influence = card.getInfluenceArray();
     int rows = influence.length;
     int cols = influence[0].length;
@@ -123,7 +123,7 @@ public class HandDisplayPanel extends JPanel {
                 cellColor = Color.GREEN;
                 break;
               case DEVALUE:
-                cellColor = Color.RED;
+                cellColor = new Color(160, 32, 240);
                 break;
               default:
                 cellColor = Color.DARK_GRAY;
@@ -148,7 +148,7 @@ public class HandDisplayPanel extends JPanel {
   @Override
   public void repaint() {
     if (parent != null && parent.getHighContrastMode() != null
-            && parent.getHighContrastMode().isEnabled()) {
+        && parent.getHighContrastMode().isEnabled()) {
       setBackground(Color.BLACK);
     } else {
       setBackground(Color.WHITE);

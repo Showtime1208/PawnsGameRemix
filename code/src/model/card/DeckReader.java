@@ -197,13 +197,16 @@ public class DeckReader implements Reader {
           case 'C':
           case 'I':
             influenceArray[row][col] = new SimpleInfluence(InfluenceKind.CLAIM);
-          break;
-          case 'U': influenceArray[row][col] = new SimpleInfluence(InfluenceKind.UPGRADE);
-          break;
-          case 'D': influenceArray[row][col] = new SimpleInfluence(InfluenceKind.DEVALUE);
-          break;
-          default: influenceArray[row][col] = new SimpleInfluence(InfluenceKind.NONE);
-          break;
+            break;
+          case 'U':
+            influenceArray[row][col] = new SimpleInfluence(InfluenceKind.UPGRADE);
+            break;
+          case 'D':
+            influenceArray[row][col] = new SimpleInfluence(InfluenceKind.DEVALUE);
+            break;
+          default:
+            influenceArray[row][col] = new SimpleInfluence(InfluenceKind.NONE);
+            break;
         }
 
       }

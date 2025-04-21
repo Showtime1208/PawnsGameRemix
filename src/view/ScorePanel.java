@@ -31,7 +31,7 @@ public class ScorePanel extends JPanel {
     this.player = player;
 
     int panelHeight =
-            (model.getHeight()) * rowHeight + rowHeight;
+        (model.getHeight()) * rowHeight + rowHeight;
     setPreferredSize(new Dimension(100, panelHeight));
     setBackground(Color.WHITE);
   }

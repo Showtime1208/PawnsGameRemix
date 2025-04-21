@@ -9,16 +9,17 @@ import model.Board;
 import model.Player;
 
 /**
- * Accessible version of PawnsBoardGame that implements high contrast mode
- * and other accessibility features.
+ * Accessible version of PawnsBoardGame that implements high contrast mode and other accessibility
+ * features.
  */
 public class AccessiblePawnsBoardGame extends PawnsBoardGame {
+
   private final HighContrastMode highContrastMode;
 
   /**
    * Constructor for the accessible game view.
    *
-   * @param model the Board that the game will be played with
+   * @param model  the Board that the game will be played with
    * @param player the Player this view represents
    */
   public AccessiblePawnsBoardGame(Board model, Player player) {
@@ -30,7 +31,7 @@ public class AccessiblePawnsBoardGame extends PawnsBoardGame {
   private void setupAccessibilityFeatures() {
     createAccessibilityMenu();
     if (boardView instanceof UpdatedPawnsBoardView) {
-      ((UpdatedPawnsBoardView) boardView).setHighContrastMode(highContrastMode);
+      ((ModifierOverlayBoardView) boardView).setHighContrastMode(highContrastMode);
     }
     handView.setHighContrastMode(highContrastMode);
   }
@@ -42,13 +43,13 @@ public class AccessiblePawnsBoardGame extends PawnsBoardGame {
 
     JMenuItem highContrastItem = new JMenuItem("Toggle High Contrast");
     highContrastItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H,
-            java.awt.Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
+        java.awt.Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
 
     highContrastItem.addActionListener(e -> {
       highContrastMode.toggle();
       boardView.repaint();
       handView.repaint();
-      refreshBoard((Board)boardView.getModel(), currentPlayer);
+      refreshBoard((Board) boardView.getModel(), currentPlayer);
     });
 
     accessibilityMenu.add(highContrastItem);

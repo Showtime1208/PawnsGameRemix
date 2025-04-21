@@ -28,8 +28,8 @@ public class PawnsBoardView extends JPanel {
   private static final int PAWN_SIZE = 20;
   private static final int PAWN_SPACING = 5;
   private final ReadOnlyBoard model;
-  private double scaleFactor;
   protected Point highlightedCell; // Changed to protected for subclass access
+  private double scaleFactor;
   private CellClickListener cellClickListener;
 
   /**
@@ -54,6 +54,15 @@ public class PawnsBoardView extends JPanel {
     });
 
     updateScaleFactor();
+  }
+
+  /**
+   * Gets the cell size used for rendering.
+   *
+   * @return the cell size in pixels
+   */
+  protected static int getCellSize() {
+    return CELL_SIZE;
   }
 
   private void updateScaleFactor() {
@@ -195,14 +204,5 @@ public class PawnsBoardView extends JPanel {
    */
   protected double getScaleFactor() {
     return scaleFactor;
-  }
-
-  /**
-   * Gets the cell size used for rendering.
-   *
-   * @return the cell size in pixels
-   */
-  protected static int getCellSize() {
-    return CELL_SIZE;
   }
 }

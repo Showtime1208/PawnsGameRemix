@@ -72,11 +72,11 @@ public class MockCell implements Cell {
 
   @Override
   public void changeValueModifier(int value) {
-
+    //needed for mock.
   }
 
   @Override
   public void resetValueModifier() {
-
+    //needed for mock.
   }
 }

@@ -12,6 +12,11 @@ public interface Influence {
    */
   boolean getInfluence();
 
+  /**
+   * Returns the new influence.
+   *
+   * @return the new InfluenceKind.
+   */
   InfluenceKind getInfluenceKind();
 
 

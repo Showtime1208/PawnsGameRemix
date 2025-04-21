@@ -5,8 +5,18 @@ import model.card.Card;
 import model.card.Influence;
 import model.card.Pawn;
 
+/**
+ * Updated Game Board class with new rules for upgrading and devaluing cards. Handles all influence
+ * and rule following logic.
+ */
 public class UpdatedGameBoard extends GameBoard {
 
+  /**
+   * Constructor for the game, same as the superclass.
+   *
+   * @param row the row.
+   * @param col the col.
+   */
   public UpdatedGameBoard(int row, int col) {
     super(row, col);
   }
@@ -27,16 +37,19 @@ public class UpdatedGameBoard extends GameBoard {
         }
         Cell cell = getCell(targetRow, targetCol);
         switch (influence.getInfluenceKind()) {
-          case CLAIM: handleClaimInfluence(player, cell);
-          break;
-          case UPGRADE: cell.changeValueModifier(+1);
-          break;
+          case CLAIM:
+            handleClaimInfluence(player, cell);
+            break;
+          case UPGRADE:
+            cell.changeValueModifier(+1);
+            break;
           case DEVALUE: {
             cell.changeValueModifier(-1);
             destroyCardIfNecessary(cell);
             break;
           }
-          default: break;
+          default:
+            break;
         }
       }
     }

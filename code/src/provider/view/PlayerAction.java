@@ -1,10 +1,9 @@
 package provider.view;
 
 /**
- * Player Action interface. Hey TA this is the customer, they didn't send this part
- * of the documentation and I didn't realize until right now so ill just guess as to what
- * it does.
- * Listener class for the controller. Deals with Player Action.
+ * Player Action interface. Hey TA this is the customer, they didn't send this part of the
+ * documentation and I didn't realize until right now so ill just guess as to what it does. Listener
+ * class for the controller. Deals with Player Action.
  */
 public interface PlayerAction {
 

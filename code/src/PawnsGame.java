@@ -8,29 +8,31 @@ import model.SimplePlayer;
 import model.UpdatedGameBoard;
 import model.card.Card;
 import model.card.DeckReader;
-import provider.controller.PBControllerAdapter;
-import provider.model.ModelAdapter;
-import provider.model.PlayerEnum;
-import provider.model.ReadonlyPawnsBoardModel;
-import provider.view.PBFrame;
-import provider.view.PBViewAdapter;
 import strategy.BoardControlStrategy;
 import strategy.FillFirstStrategy;
 import strategy.MaximizeRowScoreStrategy;
 import strategy.Strategy;
-import view.PawnsBoardGame;
 import view.AccessiblePawnsBoardGame;
-import view.PawnsBoardViewInterface;
+import view.PawnsBoardGame;
+
 
 /**
- * Main class showing how to run PawnsBoardGame (Red) and PBFrame (Blue).
+ * Main class showing how to run PawnsBoardGame.
  */
 public final class PawnsGame {
 
+  /**
+   * Main method. Runs the program.
+   * @param args the command line args.
+   */
   public static void main(String[] args) {
     if (args.length < 6) {
-      System.err.println("Usage: PawnsGame <game_type> <view_mode> <red_deck> <blue_deck> <red_player> <blue_player>");
-      System.err.println("Example: PawnsGame original accessible code/docs/deck.config code/docs/deck.config human human");
+      System.err.println(
+          "Usage: PawnsGame <game_type> <view_mode> <red_deck> <blue_deck> <red_player> "
+              + "<blue_player>");
+      System.err.println(
+          "Example: PawnsGame original accessible code/docs/deck.config "
+              + "code/docs/deck.config human human");
       return;
     }
 
@@ -50,7 +52,7 @@ public final class PawnsGame {
     redPlayer.setDeck(redDeck);
     bluePlayer.setDeck(blueDeck);
     final Board board = whichGame ? new GameBoard(5, 7)
-            : new UpdatedGameBoard(5, 7);
+        : new UpdatedGameBoard(5, 7);
     board.startGame(redPlayer, bluePlayer);
 
     // Create appropriate views based on accessibility mode
@@ -60,8 +62,8 @@ public final class PawnsGame {
       redView = new AccessiblePawnsBoardGame(board, redPlayer);
       blueView = new AccessiblePawnsBoardGame(board, bluePlayer);
       // Toggle high contrast for both views
-      ((AccessiblePawnsBoardGame)redView).getHighContrastMode().toggle();
-      ((AccessiblePawnsBoardGame)blueView).getHighContrastMode().toggle();
+      ((AccessiblePawnsBoardGame) redView).getHighContrastMode().toggle();
+      ((AccessiblePawnsBoardGame) blueView).getHighContrastMode().toggle();
     } else {
       redView = new PawnsBoardGame(board, redPlayer);
       blueView = new PawnsBoardGame(board, bluePlayer);

@@ -19,7 +19,7 @@
 //import strategy.MockCard;
 //import strategy.MockPlayer;
 //
-///**
+/// **
 // * Test class for the model adapter. Tests to ensure that the adapter correctly
 // * delegates and receives info from the functional model.
 // */

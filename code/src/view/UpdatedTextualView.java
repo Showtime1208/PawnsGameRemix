@@ -9,9 +9,17 @@ import model.UpdatedGameBoard;
 import model.card.Card;
 import model.card.Pawn;
 
+/**
+ * Textual view class for the updated game.
+ */
 public class UpdatedTextualView implements TextualView {
+
   private final Board board;
 
+  /**
+   * Constructor for the updated view.
+   * @param model the model.
+   */
   public UpdatedTextualView(UpdatedGameBoard model) {
     if (model == null) {
       throw new IllegalArgumentException("The board cannot be null");

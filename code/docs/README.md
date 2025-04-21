@@ -206,3 +206,23 @@ PawnsGameController
 
 Final Functionality-
 Complete functionality for AI players and human players on the two different views.
+
+Extra Credit:
+
+level 1-
+UpdatedGameBoard
+Modified GameCell, added InfluenceKind and modified Influence interface and influence class
+to adapt.
+
+level 0:
+View: AccessiblePawnsBoardGame- Accessible view
+Highcontrastmdoe-part of the accessible game.
+
+ModifiedOverlayBoardView and UpdatedPawnsBoardView
+
+- level 2 - functional view for
+
+Command line args to access all of this-if u want old game first arg is original
+if you want accessible view type accessible as the second arg.
+if you dont want these things type anything else as the arg.
+

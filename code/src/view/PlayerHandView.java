@@ -63,6 +63,15 @@ public class PlayerHandView extends JPanel {
   }
 
   /**
+   * Gets the current high contrast mode.
+   *
+   * @return the current high contrast mode
+   */
+  public HighContrastMode getHighContrastMode() {
+    return highContrastMode;
+  }
+
+  /**
    * Sets the high contrast mode for this view.
    *
    * @param mode the high contrast mode to use
@@ -70,15 +79,6 @@ public class PlayerHandView extends JPanel {
   public void setHighContrastMode(HighContrastMode mode) {
     this.highContrastMode = mode;
     repaint();
-  }
-
-  /**
-   * Gets the current high contrast mode.
-   *
-   * @return the current high contrast mode
-   */
-  public HighContrastMode getHighContrastMode() {
-    return highContrastMode;
   }
 
   /**
@@ -128,7 +128,7 @@ public class PlayerHandView extends JPanel {
       int cardX = CARD_SPACING + i * (CARD_WIDTH + CARD_SPACING);
       int cardY = CARD_SPACING;
       if (clickX >= cardX && clickX <= cardX + CARD_WIDTH &&
-              clickY >= cardY && clickY <= cardY + CARD_HEIGHT) {
+          clickY >= cardY && clickY <= cardY + CARD_HEIGHT) {
         // Toggle selection: if the clicked card is already selected, unselect it.
         if (selectedCardIndx == i) {
           selectedCardIndx = -1;

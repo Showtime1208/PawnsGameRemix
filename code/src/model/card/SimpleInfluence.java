@@ -5,6 +5,7 @@ package model.card;
  * or not it influences the square.
  */
 public class SimpleInfluence implements Influence {
+
   private final InfluenceKind kind;
 
   /**
@@ -26,7 +27,6 @@ public class SimpleInfluence implements Influence {
   public InfluenceKind getInfluenceKind() {
     return kind;
   }
-
 
 
 }

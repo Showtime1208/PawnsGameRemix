@@ -15,9 +15,9 @@ public class PawnsBoardGame extends JFrame implements PawnsBoardViewInterface {
 
   protected final PawnsBoardView boardView;
   protected final PlayerHandView handView;
+  protected final Player currentPlayer;
   private final ScorePanel redScorePanel;
   private final ScorePanel blueScorePanel;
-  protected final Player currentPlayer;
 
   /**
    * Constructor for the game view. Takes in the model and prints out the view representation of the
@@ -33,7 +33,7 @@ public class PawnsBoardGame extends JFrame implements PawnsBoardViewInterface {
     setLayout(new BorderLayout());
 
     // Initialize clearly
-    boardView = new UpdatedPawnsBoardView(model);
+    boardView = new ModifierOverlayBoardView(model);
     handView = new PlayerHandView(player);
 
     redScorePanel = new ScorePanel(model, model.getP1(), 90);

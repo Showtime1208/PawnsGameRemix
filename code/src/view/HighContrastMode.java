@@ -3,10 +3,11 @@ package view;
 import java.awt.Color;
 
 /**
- * Manages high contrast mode settings for the Pawns Game.
- * This class provides color schemes for high contrast mode to improve accessibility.
+ * Manages high contrast mode settings for the Pawns Game. This class provides color schemes for
+ * high contrast mode to improve accessibility.
  */
 public class HighContrastMode {
+
   private static final Color PURE_BLACK = Color.BLACK;
   private static final Color PURE_WHITE = Color.WHITE;
   private static final Color PURE_RED = Color.RED;
@@ -16,8 +17,7 @@ public class HighContrastMode {
   private boolean isEnabled;
 
   /**
-   * Constructs a new HighContrastMode instance.
-   * High contrast mode is disabled by default.
+   * Constructs a new HighContrastMode instance. High contrast mode is disabled by default.
    */
   public HighContrastMode() {
     this.isEnabled = false;
@@ -55,7 +55,7 @@ public class HighContrastMode {
   /**
    * Gets the appropriate text color based on the current mode and context.
    *
-   * @param isPlayerCell whether the cell belongs to a player
+   * @param isPlayerCell  whether the cell belongs to a player
    * @param isHighlighted whether the cell is highlighted
    * @return the appropriate Color for the text
    */
